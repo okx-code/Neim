@@ -8,6 +8,13 @@ public class InputUtil {
     private static Scanner sc = new Scanner(System.in);
 
     public static VarInteger line() {
-        return new VarInteger(Integer.parseInt(sc.nextLine()));
+        String line = sc.nextLine();
+        
+        try {
+            return new VarInteger(Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException ex) {
+            System.out.println("Illegal integer parse: " + line);
+            return null;
+        }
     }
 }
