@@ -38,7 +38,6 @@ public class TokenManager {
             if(Util.isInteger(str)) {
                 integer = str;
             } else if(!integer.isEmpty()) {
-                System.out.println("PUSHING INTEGER: " + integer);
                 stack.push(new VarInteger(Integer.parseInt(integer)));
                 integer = "";
                 token.setLength(0);
