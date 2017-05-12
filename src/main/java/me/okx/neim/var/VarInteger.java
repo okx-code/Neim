@@ -3,6 +3,7 @@ package me.okx.neim.var;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.okx.neim.util.Util;
 
 public class VarInteger {
     @Setter
@@ -15,6 +16,14 @@ public class VarInteger {
 
     public VarInteger(int value) {
         this.value = value;
+    }
+
+    public VarInteger(String str) {
+        if(Util.isInteger(str)) {
+            this.value = Integer.parseInt(str);
+        } else {
+            this.value = Util.sumString(str);
+        }
     }
 
     @Override

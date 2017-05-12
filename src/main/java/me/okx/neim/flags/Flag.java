@@ -3,7 +3,7 @@ package me.okx.neim.flags;
 import lombok.Getter;
 
 public enum Flag {
-    CODEPAGE("c");
+    USEENCODING("c");
 
     @Getter
     private String name;

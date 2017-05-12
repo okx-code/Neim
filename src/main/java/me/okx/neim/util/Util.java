@@ -39,4 +39,12 @@ public class Util {
             return false;
         }
     }
+
+    public static int sumString(String str) {
+        int ret = 0;
+        for(char c: str.toCharArray()) {
+            ret += c;
+        }
+        return ret;
+    }
 }

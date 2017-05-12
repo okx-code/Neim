@@ -26,6 +26,7 @@ public class TokenManager {
         tokens.put("𝐔", new UniquePrimeFactors());
         tokens.put("𝐩", new Product());
         tokens.put("𝐬", new Sum());
+        tokens.put("I", new Input());
         tokens.put(" ", new Nothing());
     }
 
