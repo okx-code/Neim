@@ -22,12 +22,21 @@ public class TokenManager {
     }
 
     public void registerTokens() {
+        tokens.put(" ", new Nothing());
+        tokens.put("I", new Input());
+
+        tokens.put("𝐍", new PlusMinus());
         tokens.put("𝐏", new PrimeFactors());
         tokens.put("𝐔", new UniquePrimeFactors());
+
         tokens.put("𝐩", new Product());
         tokens.put("𝐬", new Sum());
-        tokens.put("I", new Input());
-        tokens.put(" ", new Nothing());
+
+        tokens.put("α", new Variable(-1));
+        String lowerGreek = "βγδεζηθικλμνξπρσςτυφχψω";
+        for(int i = 0; i < lowerGreek.length(); i++) {
+            tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(i+10));
+        }
     }
 
     public void handleTokens(String program) {
