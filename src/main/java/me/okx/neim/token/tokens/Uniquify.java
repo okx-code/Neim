@@ -5,7 +5,7 @@ import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.types.Monad;
 import me.okx.neim.var.IntList;
 
-public class Uniqueify implements Monad<IntList> {
+public class Uniquify implements Monad<IntList> {
 
     @Override
     public NStack monad(IntList a) {

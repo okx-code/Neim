@@ -41,7 +41,7 @@ public class TokenManager {
 
         tokens.put("𝐩", new Product());
         tokens.put("𝐬", new Sum());
-        tokens.put("𝐮", new Uniqueify());
+        tokens.put("𝐮", new Uniquify());
 
         tokens.put("ℂ", new Coprime());
         tokens.put("𝔼", new Equal());
