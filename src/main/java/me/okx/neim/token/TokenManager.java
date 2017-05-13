@@ -41,8 +41,8 @@ public class TokenManager {
         tokens.put("𝐑", new Range());
         tokens.put("𝐔", new UniquePrimeFactors());
 
-        tokens.put("𝐠", new Length());
-        tokens.put("𝐥", new Largest());
+        tokens.put("𝐥", new Length());
+        tokens.put("𝐠", new Largest());
         tokens.put("𝐬", new Smallest());
         tokens.put("𝐩", new Product());
         tokens.put("𝐬", new Sum());
