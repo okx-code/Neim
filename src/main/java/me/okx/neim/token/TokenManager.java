@@ -37,6 +37,7 @@ public class TokenManager {
         tokens.put("I", new Input());
         tokens.put("R", new Random());
 
+        tokens.put("𝐄", new IsPalindrome());
         tokens.put("𝐈", new IRange());
         tokens.put("𝐌", new IsPrime());
         tokens.put("𝐍", new PlusMinus());
