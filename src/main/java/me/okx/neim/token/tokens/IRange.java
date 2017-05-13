@@ -13,7 +13,7 @@ public class IRange implements Monad<VarInteger> {
         return new NStackBuilder(irange(a.getValue())).build();
     }
 
-    private IntList irange(int a) {
+    private IntList irange(long a) {
         IntList list = new IntList();
         for(int i = 1; i <= a; i++) {
             list.add(new VarInteger(i));

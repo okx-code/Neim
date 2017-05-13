@@ -24,7 +24,7 @@ public class TokenManager {
         stack = new NStack();
     }
 
-    public void registerTokens(int thetaValue) {
+    public void registerTokens(long thetaValue) {
         tokens.put("Θ", new Variable(thetaValue));
 
         special.put("Λ", new Keep(1)); // keep values only equal to one
@@ -40,6 +40,8 @@ public class TokenManager {
         tokens.put("𝐑", new Range());
         tokens.put("𝐔", new UniquePrimeFactors());
 
+        tokens.put("𝐥", new Largest());
+        tokens.put("𝐬", new Smallest());
         tokens.put("𝐩", new Product());
         tokens.put("𝐬", new Sum());
         tokens.put("𝐮", new Uniquify());
@@ -68,7 +70,7 @@ public class TokenManager {
             if(Util.isInteger(str)) {
                 integer = str;
             } else if(!integer.isEmpty()) {
-                stack.push(new VarInteger(Integer.parseInt(integer)));
+                stack.push(new VarInteger(Long.parseLong(integer)));
                 integer = "";
                 token.setLength(0);
                 token.append(c);

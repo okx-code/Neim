@@ -33,7 +33,7 @@ public class Util {
 
     public static boolean isInteger(String str) {
         try {
-            Integer.parseInt(str);
+            Long.parseLong(str);
             return true;
         } catch(Exception ex) {
             return false;
@@ -52,7 +52,7 @@ public class Util {
         return b ? new VarInteger(1) : new VarInteger(0);
     }
 
-    public static IntList range(int a) {
+    public static IntList range(long a) {
         IntList list = new IntList();
         for(int i = 0; i < a; i++) {
             list.add(new VarInteger(i));

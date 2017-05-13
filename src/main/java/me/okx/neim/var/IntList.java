@@ -11,7 +11,7 @@ public class IntList extends ArrayList<VarInteger> {
 
     }
 
-    public void addInt(int n) {
+    public void addInt(long n) {
         this.add(new VarInteger(n));
     }
 
@@ -57,5 +57,23 @@ public class IntList extends ArrayList<VarInteger> {
             ret.add(v);
         }
         return ret;
+    }
+
+    public VarInteger getClosestTo(long target) {
+        if (this.size() < 1)
+            throw new IllegalArgumentException("The values should be at least one element");
+        if (this.size() == 1) {
+            return this.get(0);
+        }
+        long closestValue = this.get(0).getValue();
+        long leastDistance = Math.abs(this.get(0).getValue() - target);
+        for (int i = 0; i < this.size(); i++) {
+            long currentDistance = Math.abs(this.get(i).getValue() - target);
+            if (currentDistance < leastDistance) {
+                closestValue = this.get(i).getValue();
+                leastDistance = currentDistance;
+            }
+        }
+        return new VarInteger(closestValue);
     }
 }

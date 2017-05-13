@@ -6,9 +6,9 @@ import me.okx.neim.token.types.Nilad;
 import me.okx.neim.var.VarInteger;
 
 public class Variable implements Nilad {
-    private int value;
+    private long value;
 
-    public Variable(int value) {
+    public Variable(long value) {
         this.value = value;
     }
 

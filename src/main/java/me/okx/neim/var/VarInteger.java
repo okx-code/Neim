@@ -8,13 +8,13 @@ import me.okx.neim.util.Util;
 public class VarInteger implements Cloneable {
     @Setter
     @Getter
-    private int value;
+    private long value;
 
     public VarInteger() {
         this.value = 0;
     }
 
-    public VarInteger(int value) {
+    public VarInteger(long value) {
         this.value = value;
     }
 
@@ -46,16 +46,11 @@ public class VarInteger implements Cloneable {
 
     @Override
     public int hashCode() {
-        return this.value;
-    }
-
-    private VarInteger setThisTo(VarInteger that) {
-        this.setValue(that.getValue());
-        return this;
+        return Integer.parseInt(String.valueOf(this.value % Integer.MAX_VALUE));
     }
 
     public IntList primeFactors() {
-        int n = this.value;
+        long n = this.value;
         IntList factors = new IntList();
         for (int i = 2; i <= n / i; i++) {
             while (n % i == 0) {
