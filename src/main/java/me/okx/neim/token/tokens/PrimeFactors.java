@@ -6,7 +6,6 @@ import me.okx.neim.token.types.Monad;
 import me.okx.neim.var.VarInteger;
 
 public class PrimeFactors implements Monad<VarInteger> {
-
     @Override
     public NStack monad(VarInteger a) {
         return new NStackBuilder(a.primeFactors()).build();

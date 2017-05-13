@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import me.okx.neim.util.Util;
 
-public class VarInteger {
+public class VarInteger implements Cloneable {
     @Setter
     @Getter
     private int value;
@@ -77,5 +77,29 @@ public class VarInteger {
     public VarInteger multiply(VarInteger to) {
         this.setValue(this.getValue() * to.getValue());
         return this;
+    }
+
+    public VarInteger clone() {
+        return new VarInteger(this.getValue());
+    }
+
+    public VarInteger coprime(VarInteger to) {
+        IntList toFactors = to.primeFactors();
+        boolean coprime = true;
+        for(VarInteger factor : this.primeFactors()) {
+            if(toFactors.contains(factor) && factor.getValue() != 1) {
+                coprime = false;
+            }
+        }
+        return Util.booleanToNumber(coprime);
+    }
+
+    public VarInteger modulo(VarInteger to) {
+        this.setValue(this.getValue() % to.getValue());
+        return this;
+    }
+
+    public boolean isTruthy() {
+        return this.getValue() == 1;
     }
 }

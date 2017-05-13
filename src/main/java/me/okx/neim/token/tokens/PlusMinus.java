@@ -3,9 +3,10 @@ package me.okx.neim.token.tokens;
 import me.okx.neim.stack.NStack;
 import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.types.Monad;
+import me.okx.neim.token.types.Vectorisable;
 import me.okx.neim.var.VarInteger;
 
-public class PlusMinus implements Monad<VarInteger> {
+public class PlusMinus extends Vectorisable implements Monad<VarInteger> {
 
     @Override
     public NStack monad(VarInteger a) {

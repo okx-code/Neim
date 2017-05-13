@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class Util {
     @Getter
-    public static char[] codepage = ("¼½¾§§§§§ΑΒΓΔΕΖΗΘ" +
+    public static char[] codepage = ("§§§§§§§ΑΒΓ\nΔΕΖΗΘ" +
             "ΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ" +
             " !\"#$%&'()*+,-./" +
             "0123456789:;<=>?" +
@@ -46,5 +46,9 @@ public class Util {
             ret += c;
         }
         return ret;
+    }
+
+    public static VarInteger booleanToNumber(boolean b) {
+        return b ? new VarInteger(1) : new VarInteger(0);
     }
 }
