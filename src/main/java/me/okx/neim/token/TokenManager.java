@@ -3,6 +3,7 @@ package me.okx.neim.token;
 import lombok.Getter;
 import me.okx.neim.stack.NStack;
 import me.okx.neim.token.tokens.*;
+import me.okx.neim.token.tokens.special.ForEach;
 import me.okx.neim.token.tokens.special.Keep;
 import me.okx.neim.token.types.*;
 import me.okx.neim.util.Util;
@@ -29,6 +30,7 @@ public class TokenManager {
 
         special.put("Λ", new Keep(1)); // keep values only equal to one
         special.put("Σ", new Keep(0)); // keep values only equal to zero
+        special.put("Γ", new ForEach());
 
         tokens.put(" ", new Nothing());
         tokens.put("I", new Input());
@@ -91,7 +93,7 @@ public class TokenManager {
                     }
                     token.append(chars[k]);
                 }
-                i = k--;
+                i = k;
                 handleSpecial(str, token.toString());
                 token.setLength(0);
             }
