@@ -37,6 +37,7 @@ public class TokenManager {
         tokens.put("I", new Input());
         tokens.put("R", new Random());
 
+        tokens.put("𝐀", new And());
         tokens.put("𝐄", new IsPalindrome());
         tokens.put("𝐅", new Factors());
         tokens.put("𝐈", new IRange());
@@ -46,6 +47,7 @@ public class TokenManager {
         tokens.put("𝐏", new PrimeFactors());
         tokens.put("𝐑", new Range());
         tokens.put("𝐔", new UniquePrimeFactors());
+        tokens.put("𝐖", new Power());
 
         tokens.put("𝐠", new Largest());
         tokens.put("𝐥", new Length());
@@ -58,6 +60,8 @@ public class TokenManager {
         tokens.put("𝔼", new Equal());
         tokens.put("𝕄", new Modulo());
         tokens.put("𝕆", new Or());
+        tokens.put("𝕊", new Subtract());
+        tokens.put("𝕏", new XRange());
         tokens.put("𝕔", new ClosestTo());
         tokens.put("𝕞", new MultipleOf());
 

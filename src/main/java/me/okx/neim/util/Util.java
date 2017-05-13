@@ -54,7 +54,15 @@ public class Util {
 
     public static IntList range(long a) {
         IntList list = new IntList();
-        for(int i = 0; i < a; i++) {
+        for(long i = 0; i < a; i++) {
+            list.add(new VarInteger(i));
+        }
+        return list;
+    }
+
+    public static IntList xrange(long a, long b) {
+        IntList list = new IntList();
+        for(long i = a; i < b; i++) {
             list.add(new VarInteger(i));
         }
         return list;
