@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import me.okx.neim.util.Util;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class VarInteger implements Cloneable {
     @Setter
     @Getter
@@ -106,5 +109,21 @@ public class VarInteger implements Cloneable {
             --i2;
         }
         return true;
+    }
+
+    public IntList getFactors() {
+        long a = this.getValue();
+        long upperlimit = (long)(Math.sqrt(a));
+        ArrayList<Long> factors = new ArrayList<>();
+        for(long i=1;i <= upperlimit; i+= 1){
+            if(a%i == 0){
+                factors.add(i);
+                if(i != a/i){
+                    factors.add(a/i);
+                }
+            }
+        }
+        Collections.sort(factors);
+        return IntList.fromLongList(factors);
     }
 }
