@@ -50,6 +50,7 @@ public class TokenManager {
         tokens.put("𝔼", new Equal());
         tokens.put("𝕄", new Modulo());
         tokens.put("𝕆", new Or());
+        tokens.put("𝕔", new ClosestTo());
         tokens.put("𝕞", new MultipleOf());
 
         tokens.put("α", new Variable(-1));
