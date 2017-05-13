@@ -42,6 +42,7 @@ public class TokenManager {
         tokens.put("𝐈", new IRange());
         tokens.put("𝐌", new IsPrime());
         tokens.put("𝐍", new PlusMinus());
+        tokens.put("𝐎", new Not());
         tokens.put("𝐏", new PrimeFactors());
         tokens.put("𝐑", new Range());
         tokens.put("𝐔", new UniquePrimeFactors());
