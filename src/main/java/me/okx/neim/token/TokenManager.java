@@ -26,11 +26,12 @@ public class TokenManager {
     }
 
     public void registerTokens(long thetaValue) {
+        special.put("Γ", new ForEach());
+
         tokens.put("Θ", new Variable(thetaValue));
 
         special.put("Λ", new Keep(1)); // keep values only equal to one
         special.put("Σ", new Keep(0)); // keep values only equal to zero
-        special.put("Γ", new ForEach());
 
         tokens.put(" ", new Nothing());
         tokens.put("I", new Input());
