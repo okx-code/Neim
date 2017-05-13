@@ -4,6 +4,7 @@ import me.okx.neim.stack.NStack;
 import me.okx.neim.token.TokenManager;
 import me.okx.neim.token.types.Special;
 import me.okx.neim.token.types.SpecialData;
+import me.okx.neim.util.Util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
@@ -18,8 +19,8 @@ public class Keep implements Special {
     public NStack special(SpecialData data) {
         NStack stack = data.getStack();
         Object top = stack.pop();
-        if(!(top instanceof IntList)) {
-            return stack;
+        if(top instanceof VarInteger) {
+            top = Util.range(((VarInteger) top).getValue());
         }
         IntList list = (IntList) top;
         TokenManager tm;

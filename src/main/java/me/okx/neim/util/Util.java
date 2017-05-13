@@ -51,4 +51,12 @@ public class Util {
     public static VarInteger booleanToNumber(boolean b) {
         return b ? new VarInteger(1) : new VarInteger(0);
     }
+
+    public static IntList range(int a) {
+        IntList list = new IntList();
+        for(int i = 0; i < a; i++) {
+            list.add(new VarInteger(i));
+        }
+        return list;
+    }
 }
