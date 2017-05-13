@@ -10,7 +10,7 @@ public class Main {
         String program = sc.nextLine();
 
         TokenManager tm = new TokenManager();
-        tm.registerTokens();
+        tm.registerTokens(100);
         tm.handleTokens(program);
         tm.outputStack();
     }

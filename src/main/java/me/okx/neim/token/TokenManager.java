@@ -24,7 +24,8 @@ public class TokenManager {
         stack = new NStack();
     }
 
-    public void registerTokens() {
+    public void registerTokens(int thetaValue) {
+        tokens.put("Θ", new Variable(thetaValue));
 
         special.put("Λ", new Keep(1)); // keep values only equal to one
         special.put("Σ", new Keep(0)); // keep values only equal to zero
@@ -46,6 +47,7 @@ public class TokenManager {
         tokens.put("ℂ", new Coprime());
         tokens.put("𝔼", new Equal());
         tokens.put("𝕄", new Modulo());
+        tokens.put("𝕆", new Or());
         tokens.put("𝕞", new MultipleOf());
 
         tokens.put("α", new Variable(-1));
@@ -76,17 +78,15 @@ public class TokenManager {
                 handleToken(str);
                 token.setLength(0);
             } else if(special.containsKey(str)) {
-                System.out.println("SPECIAL: " + str);
                 token.setLength(0);
                 int k = i+1;
                 for(; k < chars.length; k++) {
                     if(chars[k] == ')') {
-                        k++;
                         break;
                     }
                     token.append(chars[k]);
                 }
-                i = k;
+                i = k--;
                 handleSpecial(str, token.toString());
                 token.setLength(0);
             }
