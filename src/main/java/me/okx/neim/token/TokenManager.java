@@ -39,6 +39,8 @@ public class TokenManager {
         tokens.put(" ", new Nothing());
         tokens.put("I", new Input());
         tokens.put("R", new Random());
+        tokens.put("D", new Duplicate());
+        tokens.put("U", new DuplicateFromUnderneath());
 
         tokens.put("𝐀", new And());
         tokens.put("𝐄", new IsPalindrome());
