@@ -43,6 +43,7 @@ public class TokenManager {
         tokens.put("U", new DuplicateFromUnderneath());
 
         tokens.put("𝐀", new And());
+        tokens.put("𝐁", new Substrings());
         tokens.put("𝐄", new IsPalindrome());
         tokens.put("𝐅", new Factors());
         tokens.put("𝐈", new IRange());
