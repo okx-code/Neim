@@ -7,6 +7,12 @@ public class IntList extends ArrayList<VarInteger> {
         this.addAll(arr);
     }
 
+    public IntList(Iterable i) {
+        for(Object a : i) {
+            this.add((VarInteger) a);
+        }
+    }
+
     public static IntList fromLongList(ArrayList<Long> a) {
         IntList list = new IntList();
         for(long l : a) {

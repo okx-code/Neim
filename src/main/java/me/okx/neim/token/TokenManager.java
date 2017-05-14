@@ -6,6 +6,9 @@ import me.okx.neim.token.tokens.*;
 import me.okx.neim.token.tokens.special.ForEach;
 import me.okx.neim.token.tokens.special.Keep;
 import me.okx.neim.token.types.*;
+import me.okx.neim.token.types.vectorisable.Vectorisable;
+import me.okx.neim.token.types.vectorisable.VectorisableDyadIntInt;
+import me.okx.neim.token.types.vectorisable.VectorisableDyadListInt;
 import me.okx.neim.util.Util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
@@ -41,14 +44,17 @@ public class TokenManager {
         tokens.put("𝐄", new IsPalindrome());
         tokens.put("𝐅", new Factors());
         tokens.put("𝐈", new IRange());
+        tokens.put("𝐋", new NPrimes());
         tokens.put("𝐌", new IsPrime());
         tokens.put("𝐍", new PlusMinus());
         tokens.put("𝐎", new Not());
         tokens.put("𝐏", new PrimeFactors());
         tokens.put("𝐑", new Range());
+        tokens.put("𝐒", new CreateSingletonList());
         tokens.put("𝐔", new UniquePrimeFactors());
         tokens.put("𝐖", new Power());
 
+        tokens.put("𝐝", new Deltas());
         tokens.put("𝐠", new Largest());
         tokens.put("𝐥", new Length());
         tokens.put("𝐦", new Smallest());
@@ -56,6 +62,7 @@ public class TokenManager {
         tokens.put("𝐬", new Sum());
         tokens.put("𝐮", new Uniquify());
 
+        tokens.put("𝔸", new Append());
         tokens.put("ℂ", new Coprime());
         tokens.put("𝔼", new Equal());
         tokens.put("𝕄", new Modulo());
@@ -119,27 +126,74 @@ public class TokenManager {
     }
 
     private void run(Token t) {
-        NStack returnedStack = new NStack();
-        boolean vectorisable = t instanceof Vectorisable;
         if(t instanceof Nilad) {
-            returnedStack = ((Nilad) t).nilad();
+            handleNilad((Nilad) t);
         } else if(t instanceof Monad) {
-            Monad monad = (Monad) t;
-            Object a = stack.pop();
-            if(vectorisable && a instanceof IntList) {
-                IntList list = (IntList) a;
-                for(VarInteger val : list) {
-                    returnedStack.addAll(monad.monad(val));
+            handleMonad((Monad) t);
+        } else if(t instanceof Dyad) {
+            handleDyad((Dyad) t);
+        }
+    }
+
+    private void handleNilad(Nilad n) {
+        stack.addAll(n.nilad());
+    }
+
+    private void handleMonad(Monad m) {
+        Object a = stack.pop();
+        if(m instanceof Vectorisable && a instanceof IntList) {
+            IntList list = (IntList) a;
+            IntList ret = new IntList();
+            for(VarInteger val : list) {
+                ret.addAll(m.monad(val));
+            }
+            stack.add(ret);
+        } else {
+            stack.addAll(m.monad(a));
+        }
+    }
+
+    private void handleDyad(Dyad d) {
+        Object b = stack.pop();
+        Object a = stack.pop();
+        if(d instanceof VectorisableDyadIntInt && (b instanceof IntList || a instanceof IntList)) {
+            IntList bList, aList;
+            if(b instanceof IntList) {
+                bList = (IntList) b;
+                if(a instanceof IntList) {
+                    aList = (IntList) a;
+                } else {
+                    aList = ((VarInteger) a).repeat(bList.size());
                 }
             } else {
-                returnedStack = monad.monad(a);
+                aList = (IntList) a;
+                bList = ((VarInteger) b).repeat(aList.size());
             }
-        } else if(t instanceof Dyad) {
-            Object b = stack.pop();
-            Object a = stack.pop();
-            returnedStack = ((Dyad) t).dyad(a, b);
+            IntList list = new IntList();
+            for(int i = 0; i < bList.size(); i++) {
+                VarInteger bInt = bList.get(i);
+                VarInteger aInt = aList.get(i);
+                list.addAll(d.dyad(aInt, bInt));
+            }
+            stack.add(list);
+            return;
+        } else if(d instanceof VectorisableDyadListInt && a instanceof IntList) {
+            IntList bList, aList = (IntList) a;
+            if(b instanceof IntList) {
+                bList = (IntList) b;
+            } else {
+                bList = Util.createSingletonList((VarInteger) b);
+            }
+            for(int i = 0; i  < bList.size(); i++) {
+                VarInteger bInt = bList.get(i);
+                NStack run = d.dyad(aList, bInt);
+                for(Object element : (IntList) run.get(0)) {
+                    aList.add((VarInteger) element);
+                }
+            }
+            stack.push(aList);
         }
-        stack.addAll(returnedStack);
+        stack.addAll(d.dyad(a, b));
     }
 
     private void runSpecial(Special sp, String val) {

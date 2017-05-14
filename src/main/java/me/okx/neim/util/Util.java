@@ -4,9 +4,6 @@ import lombok.Getter;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Util {
     @Getter
     public static char[] codepage = ("§§§§§§§ΑΒΓ\nΔΕΖΗΘ" +
@@ -28,7 +25,9 @@ public class Util {
     ).toCharArray();
 
     public static IntList createSingletonList(VarInteger n) {
-        return new IntList(new ArrayList<>(Arrays.asList(n)));
+        IntList list = new IntList();
+        list.add(n);
+        return list;
     }
 
     public static boolean isInteger(String str) {
