@@ -11,6 +11,7 @@ public class Append extends VectorisableDyadListInt implements Dyad<IntList, Var
 
     @Override
     public NStack dyad(IntList a, VarInteger b) {
+        a.add(b);
         return new NStackBuilder(a).build();
     }
 }

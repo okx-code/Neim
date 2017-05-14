@@ -187,11 +187,11 @@ public class TokenManager {
             for(int i = 0; i  < bList.size(); i++) {
                 VarInteger bInt = bList.get(i);
                 NStack run = d.dyad(aList, bInt);
-                for(Object element : (IntList) run.get(0)) {
-                    aList.add((VarInteger) element);
+                for(Object o : run) {
+                    stack.add(o);
                 }
             }
-            stack.push(aList);
+            return;
         }
         stack.addAll(d.dyad(a, b));
     }
