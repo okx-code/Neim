@@ -59,6 +59,7 @@ public class TokenManager {
 
         tokens.put("𝐝", new Deltas());
         tokens.put("𝐠", new Largest());
+        tokens.put("𝐣", new Join());
         tokens.put("𝐥", new Length());
         tokens.put("𝐦", new Smallest());
         tokens.put("𝐩", new Product());
