@@ -3,17 +3,14 @@ package me.okx.neim.util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputUtil {
+    private static List<String> inputs = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
 
-    public static VarInteger getInteger() {
-        return new VarInteger(line());
-    }
-    public static IntList getList() {
-        return getList(line());
-    }
     public static IntList getList(String ss) {
         IntList list = new IntList();
         for(String s : ss.split(" ")) {
@@ -21,8 +18,13 @@ public class InputUtil {
         }
         return list;
     }
+
     public static Object getSomething() {
-        String s = line();
+        return getSomething(-1);
+    }
+
+    public static Object getSomething(int lineNumber) {
+        String s = line(lineNumber);
         if(s.contains(" ")) {
             return getList(s);
         } else {
@@ -31,7 +33,18 @@ public class InputUtil {
     }
 
     public static String line() {
-        return sc.nextLine();
+        return line(-1);
+    }
+
+    public static String line(int lineNumber) {
+        String line;
+        if (lineNumber < 0) {
+            line = sc.nextLine();
+            inputs.add(line);
+        } else {
+            line = inputs.get(lineNumber);
+        }
+        return line;
     }
 
 }

@@ -8,7 +8,7 @@ public class NStack extends Stack {
     @Override
     public Object pop() {
         if(this.size() == 0) {
-            return InputUtil.getInteger();
+            return InputUtil.getSomething();
         } else {
             return super.pop();
         }

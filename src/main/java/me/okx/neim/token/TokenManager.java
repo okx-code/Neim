@@ -29,6 +29,10 @@ public class TokenManager {
     }
 
     public void registerTokens(long thetaValue) {
+        tokens.put("₁", new InputLine(0));
+        tokens.put("₂", new InputLine(1));
+        tokens.put("₃", new InputLine(2));
+
         special.put("Γ", new ForEach());
 
         tokens.put("Θ", new Variable(thetaValue));
@@ -55,7 +59,6 @@ public class TokenManager {
         tokens.put("𝐑", new Range());
         tokens.put("𝐒", new CreateSingletonList());
         tokens.put("𝐔", new UniquePrimeFactors());
-        tokens.put("𝐖", new Power());
 
         tokens.put("𝐝", new Deltas());
         tokens.put("𝐠", new Largest());
@@ -72,6 +75,7 @@ public class TokenManager {
         tokens.put("𝕄", new Modulo());
         tokens.put("𝕆", new Or());
         tokens.put("𝕊", new Subtract());
+        tokens.put("𝕎", new Power());
         tokens.put("𝕏", new XRange());
         tokens.put("𝕔", new ClosestTo());
         tokens.put("𝕞", new MultipleOf());

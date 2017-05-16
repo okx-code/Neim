@@ -6,7 +6,7 @@ import me.okx.neim.var.VarInteger;
 
 public class Util {
     @Getter
-    public static char[] codepage = ("§§§§§§§ΑΒΓ\nΔΕΖΗΘ" +
+    public static char[] codepage = ("§§§§₁₂₃ΑΒΓ\nΔΕΖΗΘ" +
             "ΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ" +
             " !\"#$%&'()*+,-./" +
             "0123456789:;<=>?" +
