@@ -23,7 +23,7 @@ public class VarInteger implements Cloneable {
 
     public VarInteger(String str) {
         if(Util.isInteger(str)) {
-            this.value = Integer.parseInt(str);
+            this.value = Long.parseLong(str);
         } else {
             this.value = Util.sumString(str);
         }

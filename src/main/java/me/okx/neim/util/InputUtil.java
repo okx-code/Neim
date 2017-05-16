@@ -32,16 +32,15 @@ public class InputUtil {
         }
     }
 
-    public static String line() {
-        return line(-1);
-    }
-
     public static String line(int lineNumber) {
         String line;
         if (lineNumber < 0) {
             line = sc.nextLine();
             inputs.add(line);
         } else {
+            while(inputs.size() <= lineNumber) {
+                line(-1);
+            }
             line = inputs.get(lineNumber);
         }
         return line;
