@@ -79,7 +79,7 @@ public class TokenManager {
         tokens.put("𝕎", new Power());
         tokens.put("𝕏", new XRange());
         tokens.put("𝕔", new ClosestTo());
-        tokens.put("𝐢", new Contains());
+        tokens.put("𝕚", new Contains());
         tokens.put("𝕞", new MultipleOf());
 
         tokens.put("α", new Variable(-1));
