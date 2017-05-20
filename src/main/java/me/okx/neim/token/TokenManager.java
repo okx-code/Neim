@@ -61,6 +61,8 @@ public class TokenManager {
         tokens.put("𝐓", new Factorial());
         tokens.put("𝐔", new UniquePrimeFactors());
 
+        int y = 0;
+
         tokens.put("𝐝", new Deltas());
         tokens.put("𝐠", new Largest());
         tokens.put("𝐣", new Join());
