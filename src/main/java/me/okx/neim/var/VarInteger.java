@@ -204,4 +204,12 @@ public class VarInteger implements Cloneable {
         }
         return new VarInteger(3*(p+(i<<5))+7+(p&1));
     }
+
+    public VarInteger factorial() {
+        long result = 1;
+        for(long i = 2; i <= this.getValue(); i++) {
+            result *= i;
+        }
+        return new VarInteger(result);
+    }
 }
