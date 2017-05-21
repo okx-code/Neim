@@ -75,7 +75,7 @@ public class IntList extends ArrayList<VarInteger> {
 
     public VarInteger getClosestTo(long target) {
         if (this.size() < 1)
-            throw new IllegalArgumentException("The values should be at least one element");
+            return new VarInteger(0);
         if (this.size() == 1) {
             return this.get(0);
         }
@@ -83,7 +83,7 @@ public class IntList extends ArrayList<VarInteger> {
         long leastDistance = Math.abs(this.get(0).getValue() - target);
         for (int i = 0; i < this.size(); i++) {
             long currentDistance = Math.abs(this.get(i).getValue() - target);
-            if (currentDistance < leastDistance) {
+            if (currentDistance <= leastDistance) {
                 closestValue = this.get(i).getValue();
                 leastDistance = currentDistance;
             }
