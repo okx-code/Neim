@@ -41,6 +41,8 @@ public class TokenManager {
         special.put("Σ", new Keep(0)); // keep values only equal to zero
 
         tokens.put(" ", new Nothing());
+        tokens.put("<", new Increment());
+        tokens.put(">", new Decrement());
         tokens.put("D", new Duplicate());
         tokens.put("I", new Input());
         tokens.put("R", new Random());

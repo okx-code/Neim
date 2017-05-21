@@ -83,7 +83,7 @@ public class IntList extends ArrayList<VarInteger> {
         long leastDistance = Math.abs(this.get(0).getValue() - target);
         for (int i = 0; i < this.size(); i++) {
             long currentDistance = Math.abs(this.get(i).getValue() - target);
-            if (currentDistance <= leastDistance) {
+            if (currentDistance < leastDistance) {
                 closestValue = this.get(i).getValue();
                 leastDistance = currentDistance;
             }
@@ -95,7 +95,7 @@ public class IntList extends ArrayList<VarInteger> {
         StringBuilder str = new StringBuilder();
         for(int i = 0; i < this.size(); i++) {
             if(i != 0) {
-                str.append(" ");
+                str.append(delimiter);
             }
             str.append(this.get(i));
         }
