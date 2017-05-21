@@ -74,6 +74,7 @@ public class TokenManager {
 
         tokens.put("𝔸", new Append());
         tokens.put("ℂ", new Coprime());
+        tokens.put("𝔻", new Add());
         tokens.put("𝔼", new Equal());
         tokens.put("𝕄", new Modulo());
         tokens.put("𝕆", new Or());
