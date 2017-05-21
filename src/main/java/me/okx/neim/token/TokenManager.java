@@ -92,8 +92,6 @@ public class TokenManager {
         for(int i = 0; i < lowerGreek.length(); i++) {
             tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(i+10));
         }
-
-        // 𝐥>𝐈Γ6Θℝ<)₁𝕔>
     }
 
     public void handleTokens(String program) {
@@ -107,7 +105,7 @@ public class TokenManager {
             if(Util.isInteger(str)) {
                 integer = str;
             } else if(!integer.isEmpty()) {
-                stack.push(new VarInteger(Long.parseLong(integer)));
+                stack.push(new VarInteger(integer));
                 integer = "";
                 token.setLength(0);
                 token.append(c);
@@ -129,6 +127,9 @@ public class TokenManager {
                 handleSpecial(str, token.toString());
                 token.setLength(0);
             }
+        }
+        if(!integer.isEmpty()) {
+            stack.push(new VarInteger(integer));
         }
     }
 
@@ -221,5 +222,16 @@ public class TokenManager {
         for(Object elem : stack) {
             System.out.println(String.valueOf(elem));
         }
+    }
+
+    public String stackAsString() {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < stack.size(); i++) {
+            if(i != 0) {
+                sb.append("\n");
+            }
+            sb.append(stack.get(i));
+        }
+        return sb.toString();
     }
 }

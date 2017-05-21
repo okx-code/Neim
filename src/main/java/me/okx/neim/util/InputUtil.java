@@ -3,6 +3,7 @@ package me.okx.neim.util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,6 +11,14 @@ import java.util.Scanner;
 public class InputUtil {
     private static List<String> inputs = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
+
+    public static void setInputStream(InputStream is) {
+        sc = new Scanner(is);
+    }
+
+    public static void clearInputs() {
+        inputs = new ArrayList<>();
+    }
 
     public static IntList getList(String ss) {
         IntList list = new IntList();
