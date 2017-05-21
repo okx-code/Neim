@@ -91,7 +91,7 @@ public class TokenManager {
             tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(i+10));
         }
 
-        // 𝐈Γ6Θℝ1𝕊)₁𝕔α𝕊
+        // 𝐥>𝐈Γ6Θℝ<)₁𝕔>
     }
 
     public void handleTokens(String program) {
