@@ -88,6 +88,7 @@ public class TokenManager {
         tokens.put("𝕔", new ClosestTo());
         tokens.put("𝕚", new Contains());
         tokens.put("𝕞", new MultipleOf());
+        tokens.put("𝕣", new ReverseRepeat());
 
         tokens.put("α", new Variable(-1));
         String lowerGreek = "βγδεζηθικλμνξπρσςτυφχψω";
