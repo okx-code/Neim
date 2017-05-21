@@ -80,6 +80,7 @@ public class TokenManager {
         tokens.put("𝕆", new Or());
         tokens.put("ℝ", new Repeat());
         tokens.put("𝕊", new Subtract());
+        tokens.put("𝕋", new Multiply());
         tokens.put("𝕍", new IntegerDivide());
         tokens.put("𝕎", new Power());
         tokens.put("𝕏", new XRange());
