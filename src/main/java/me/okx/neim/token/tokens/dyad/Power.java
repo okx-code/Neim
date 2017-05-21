@@ -1,18 +1,16 @@
-package me.okx.neim.token.tokens;
+package me.okx.neim.token.tokens.dyad;
 
 import me.okx.neim.stack.NStack;
 import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.types.Dyad;
 import me.okx.neim.var.VarInteger;
 
-public class Subtract implements Dyad<VarInteger, VarInteger> {
+public class Power implements Dyad<VarInteger, VarInteger> {
 
     @Override
     public NStack dyad(VarInteger a, VarInteger b) {
         return new NStackBuilder(
-                new VarInteger(
-                        a.getValue() - b.getValue()
-                )
+                new VarInteger((long) Math.pow(a.getValue(), b.getValue()))
         ).build();
     }
 }

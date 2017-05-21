@@ -1,4 +1,4 @@
-package me.okx.neim.token.tokens;
+package me.okx.neim.token.tokens.dyad;
 
 import me.okx.neim.stack.NStack;
 import me.okx.neim.stack.NStackBuilder;

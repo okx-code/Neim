@@ -3,6 +3,7 @@ package me.okx.neim.token;
 import lombok.Getter;
 import me.okx.neim.stack.NStack;
 import me.okx.neim.token.tokens.*;
+import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.special.ForEach;
 import me.okx.neim.token.tokens.special.Keep;
 import me.okx.neim.token.types.*;
@@ -48,7 +49,6 @@ public class TokenManager {
         tokens.put("R", new Random());
         tokens.put("U", new DuplicateFromUnderneath());
 
-        tokens.put("𝐀", new And());
         tokens.put("𝐁", new Substrings());
         tokens.put("𝐄", new IsPalindrome());
         tokens.put("𝐅", new Factors());
@@ -81,6 +81,7 @@ public class TokenManager {
         tokens.put("𝕊", new Subtract());
         tokens.put("𝕎", new Power());
         tokens.put("𝕏", new XRange());
+        tokens.put("𝕒", new And());
         tokens.put("𝕔", new ClosestTo());
         tokens.put("𝕚", new Contains());
         tokens.put("𝕞", new MultipleOf());
