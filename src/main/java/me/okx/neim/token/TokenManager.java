@@ -117,9 +117,17 @@ public class TokenManager {
             } else if(special.containsKey(str)) {
                 token.setLength(0);
                 int k = i+1;
+                int push = 0;
                 for(; k < chars.length; k++) {
-                    if(chars[k] == ')') {
-                        break;
+                    String at = String.valueOf(chars[k]);
+                    if(special.containsKey(at)) {
+                        push++;
+                    }
+                    if(at.equals(")")) {
+                        push--;
+                        if(push < 0) {
+                            break;
+                        }
                     }
                     token.append(chars[k]);
                 }
