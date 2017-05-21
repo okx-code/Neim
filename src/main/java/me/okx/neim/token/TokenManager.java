@@ -41,8 +41,8 @@ public class TokenManager {
         special.put("Σ", new Keep(0)); // keep values only equal to zero
 
         tokens.put(" ", new Nothing());
-        tokens.put("<", new Increment());
-        tokens.put(">", new Decrement());
+        tokens.put(">", new Increment());
+        tokens.put("<", new Decrement());
         tokens.put("D", new Duplicate());
         tokens.put("I", new Input());
         tokens.put("R", new Random());
@@ -77,6 +77,7 @@ public class TokenManager {
         tokens.put("𝔼", new Equal());
         tokens.put("𝕄", new Modulo());
         tokens.put("𝕆", new Or());
+        tokens.put("ℝ", new Repeat());
         tokens.put("𝕊", new Subtract());
         tokens.put("𝕎", new Power());
         tokens.put("𝕏", new XRange());
@@ -89,6 +90,8 @@ public class TokenManager {
         for(int i = 0; i < lowerGreek.length(); i++) {
             tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(i+10));
         }
+
+        // 𝐈Γ6Θℝ1𝕊)₁𝕔α𝕊
     }
 
     public void handleTokens(String program) {
