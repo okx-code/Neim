@@ -4,7 +4,7 @@ public class NStackBuilder {
     private NStack stack;
 
     public NStackBuilder(Object elem) {
-        stack = new NStack();
+        stack = new NStack(null);
         stack.push(elem);
     }
 

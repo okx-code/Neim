@@ -7,13 +7,15 @@ import me.okx.neim.util.InputUtil;
 
 public class InputLine implements Nilad {
     private int line;
+    private InputUtil input;
 
-    public InputLine(int line) {
+    public InputLine(int line, InputUtil input) {
         this.line = line;
+        this.input = input;
     }
 
     @Override
     public NStack nilad() {
-        return new NStackBuilder(InputUtil.getSomething(line)).build();
+        return new NStackBuilder(input.getSomething(line)).build();
     }
 }

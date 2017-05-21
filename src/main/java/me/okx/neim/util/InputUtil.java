@@ -9,18 +9,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputUtil {
-    private static List<String> inputs = new ArrayList<>();
-    private static Scanner sc = new Scanner(System.in);
+    private List<String> inputs = new ArrayList<>();
+    private Scanner sc = new Scanner(System.in);
 
-    public static void setInputStream(InputStream is) {
-        sc = new Scanner(is);
+    public void setInputStream(InputStream is) {
+        this.sc = new Scanner(is);
     }
 
-    public static void clearInputs() {
-        inputs = new ArrayList<>();
+    public void clearInputs() {
+        this.inputs = new ArrayList<>();
     }
 
-    public static IntList getList(String ss) {
+    public IntList getList(String ss) {
         IntList list = new IntList();
         for(String s : ss.split(" ")) {
             list.add(new VarInteger(s));
@@ -28,11 +28,11 @@ public class InputUtil {
         return list;
     }
 
-    public static Object getSomething() {
+    public Object getSomething() {
         return getSomething(-1);
     }
 
-    public static Object getSomething(int lineNumber) {
+    public Object getSomething(int lineNumber) {
         String s = line(lineNumber);
         if(s.contains(" ")) {
             return getList(s);
@@ -41,7 +41,7 @@ public class InputUtil {
         }
     }
 
-    public static String line(int lineNumber) {
+    public String line(int lineNumber) {
         String line;
         if (lineNumber < 0) {
             line = sc.nextLine();

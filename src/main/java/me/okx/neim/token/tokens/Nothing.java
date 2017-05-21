@@ -7,6 +7,6 @@ public class Nothing implements Nilad {
 
     @Override
     public NStack nilad() {
-        return new NStack();
+        return new NStack(null);
     }
 }

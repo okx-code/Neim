@@ -10,6 +10,7 @@ import me.okx.neim.token.types.*;
 import me.okx.neim.token.types.vectorisable.Vectorisable;
 import me.okx.neim.token.types.vectorisable.VectorisableDyadIntInt;
 import me.okx.neim.token.types.vectorisable.VectorisableDyadListInt;
+import me.okx.neim.util.InputUtil;
 import me.okx.neim.util.Util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
@@ -21,18 +22,21 @@ public class TokenManager {
     private Map<String, Token> tokens;
     private Map<String, Special> special;
     @Getter
+    private InputUtil input;
+    @Getter
     private NStack stack;
 
     public TokenManager() {
+        input = new InputUtil();
         tokens = new HashMap<>();
         special = new HashMap<>();
-        stack = new NStack();
+        stack = new NStack(input);
     }
 
     public void registerTokens(long thetaValue) {
-        tokens.put("₁", new InputLine(0));
-        tokens.put("₂", new InputLine(1));
-        tokens.put("₃", new InputLine(2));
+        tokens.put("₁", new InputLine(0, input));
+        tokens.put("₂", new InputLine(1, input));
+        tokens.put("₃", new InputLine(2, input));
 
         special.put("Γ", new ForEach());
 
@@ -45,7 +49,7 @@ public class TokenManager {
         tokens.put(">", new Increment());
         tokens.put("<", new Decrement());
         tokens.put("D", new Duplicate());
-        tokens.put("I", new Input());
+        tokens.put("I", new Input(input));
         tokens.put("R", new Random());
         tokens.put("U", new DuplicateFromUnderneath());
 
