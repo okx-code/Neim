@@ -1,0 +1,10 @@
+language: java
+jdk:
+  - oraclejdk8
+deploy:
+  provider: releases
+  api_key:
+    secure: "ivpqKLWq57kFZb+uaXw3NK+T2R8PF2XSlr9WZHIPRPDkdIcMWH3/c7qoKz4ybrZ1jMYpP5VQap4JAmm+8K1dG6PL1tuLnsFGxYEaeIHPwxzf/FdUajZjZnsChJmkv/NFrjqwitdZ0X0iR/NiA2GVfqy27DPW70Q6sa8jcWsgdqXznAbxhGKyXshj9xYJ3i0e/aPi4KfeGSPcpMwQYjte1tbas8ykG0nT/e+0bRJDZFIf8lCWLszDasOxdPun8RcWzg0IHoPCXMqWr/H28Lv0K8fDNWD+V2WF31eOgGiSoOfTkFgm4tAx56WcDy42a93YXylI6VJXK+N067Q17+L3T0/5DQsplrhbxvCU4eFz89EaZXdi8XfZ1NU3EuG/GzFq7G/cD1ucl+4adKu6J4G3/H40aT42tmqV0Q4izg1Nq8V1IDPIMUN9+7299CJYWrlovTlujav/3+al3E9rALiDk65Oc+MajYJctoReVpi+08uDE2PXERk7PdoO1vT9fI8bALTL+LXfEzhKsx7rD6IdSznEbke2iCRthcxN+AclpZvedo16wIv8Ud1/VUZb9HusUhFMKNgoMgKouYRGc5Bu39UUwfAjIT++AKbsnkhq+iRzfphoEDAl2PNa1FZx/F5BUj2735syUYoDdnlsTLJMaNM25Xgrpc1eQhaiFCSs1OY="
+  file: "build/libs/Neim-1.0-SNAPSHOT.jar"
+  on:
+    tags: true
