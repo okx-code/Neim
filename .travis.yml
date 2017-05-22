@@ -8,3 +8,5 @@ deploy:
   file: "build/libs/Neim-1.0-SNAPSHOT.jar"
   on:
     tags: true
+before_install:
+ - chmod +x gradlew
