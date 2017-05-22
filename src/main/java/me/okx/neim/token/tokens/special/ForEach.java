@@ -25,6 +25,7 @@ public class ForEach implements Special {
         IntList finished = new IntList();
         for(VarInteger var : a) {
             tm = new TokenManager();
+            tm.getInput() = data.getInput();
             tm.getStack().push(var);
             tm.registerTokens(var.getValue());
             tm.handleTokens(value);
