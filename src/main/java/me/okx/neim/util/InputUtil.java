@@ -22,6 +22,14 @@ public class InputUtil {
         return inputStream;
     }
 
+    public void setInputs(List<String> inputs) {
+        this.inputs = inputs;
+    }
+
+    public List<String> getInputs() {
+        return inputs;
+    }
+
     public void clearInputs() {
         this.inputs = new ArrayList<>();
     }

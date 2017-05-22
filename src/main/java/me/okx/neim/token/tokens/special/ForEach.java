@@ -8,6 +8,8 @@ import me.okx.neim.util.Util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
+import java.util.function.Function;
+
 public class ForEach implements Special {
 
     @Override
@@ -25,10 +27,8 @@ public class ForEach implements Special {
         IntList finished = new IntList();
         for(VarInteger var : a) {
             tm = new TokenManager();
-            System.out.println("Current input stream: " + tm.getInput().getInputStream().toString());
-            System.out.println("Setting to new input stream: " + stack.getInput().getInputStream().toString());
             tm.getInput().setInputStream(stack.getInput().getInputStream());
-            System.out.println("New input stream: " + tm.getInput().getInputStream().toString());
+            tm.getInput().setInputs(stack.getInput().getInputs());
             tm.getStack().push(var);
             tm.registerTokens(var.getValue());
             tm.handleTokens(value);
@@ -36,5 +36,13 @@ public class ForEach implements Special {
         }
         stack.add(finished);
         return stack;
+    }
+
+    public void f(Function<Integer, Integer> g) {
+        g.apply(3);
+    }
+
+    public void g() {
+        f(a->{int t=1;for(;a>0;a--)t*=a;return t;});
     }
 }
