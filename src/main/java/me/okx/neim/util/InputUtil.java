@@ -6,12 +6,14 @@ import me.okx.neim.var.VarInteger;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class InputUtil {
     private List<String> inputs = new ArrayList<>();
     private InputStream inputStream = System.in;
     private Scanner sc = new Scanner(inputStream);
+    private int len = 1;
 
     public void setInputStream(InputStream is) {
         inputStream = is;
@@ -28,10 +30,6 @@ public class InputUtil {
 
     public List<String> getInputs() {
         return inputs;
-    }
-
-    public void clearInputs() {
-        this.inputs = new ArrayList<>();
     }
 
     public IntList getList(String ss) {
@@ -58,11 +56,25 @@ public class InputUtil {
     public String line(int lineNumber) {
         String line;
         if (lineNumber < 0) {
-            line = sc.nextLine();
-            inputs.add(line);
+            try {
+                line = sc.nextLine();
+                inputs.add(line);
+            } catch(NoSuchElementException e) {
+                try {
+                    return inputs.get(0);
+                } catch(Exception e1) {
+                    return "0";
+                }
+            }
         } else {
-            while(inputs.size() <= lineNumber) {
-                System.out.println("Size: " + inputs.size() + " Line: " + lineNumber + " Got: " + line(-1));
+            while(inputs.size() <= lineNumber % len) {
+                if(sc.hasNextLine()) {
+                    line(-1);
+                } else {
+                    if(len <= 1) {
+                        len = inputs.size();
+                    }
+                }
             }
             line = inputs.get(lineNumber);
         }
