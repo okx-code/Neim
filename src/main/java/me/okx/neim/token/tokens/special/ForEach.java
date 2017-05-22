@@ -25,7 +25,10 @@ public class ForEach implements Special {
         IntList finished = new IntList();
         for(VarInteger var : a) {
             tm = new TokenManager();
-            tm.getInput() = data.getInput();
+            System.out.println("Current input stream: " + tm.getInput().getInputStream().toString());
+            System.out.println("Setting to new input stream: " + stack.getInput().getInputStream().toString());
+            tm.getInput().setInputStream(stack.getInput().getInputStream());
+            System.out.println("New input stream: " + tm.getInput().getInputStream().toString());
             tm.getStack().push(var);
             tm.registerTokens(var.getValue());
             tm.handleTokens(value);

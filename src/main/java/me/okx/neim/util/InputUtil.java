@@ -10,10 +10,16 @@ import java.util.Scanner;
 
 public class InputUtil {
     private List<String> inputs = new ArrayList<>();
-    private Scanner sc = new Scanner(System.in);
+    private InputStream inputStream = System.in;
+    private Scanner sc = new Scanner(inputStream);
 
     public void setInputStream(InputStream is) {
-        this.sc = new Scanner(is);
+        inputStream = is;
+        this.sc = new Scanner(inputStream);
+    }
+
+    public InputStream getInputStream() {
+        return inputStream;
     }
 
     public void clearInputs() {
@@ -48,7 +54,7 @@ public class InputUtil {
             inputs.add(line);
         } else {
             while(inputs.size() <= lineNumber) {
-                line(-1);
+                System.out.println("Size: " + inputs.size() + " Line: " + lineNumber + " Got: " + line(-1));
             }
             line = inputs.get(lineNumber);
         }
