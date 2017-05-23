@@ -10,6 +10,6 @@ public class ReverseRepeat extends VectorisableDyadIntInt implements Dyad<VarInt
 
     @Override
     public NStack dyad(VarInteger a, VarInteger b) {
-        return new NStackBuilder(b.repeat(a.getValue())).build();
+        return new NStackBuilder(b.repeat(a.getValue()).join("")).build();
     }
 }
