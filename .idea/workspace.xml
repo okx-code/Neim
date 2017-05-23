@@ -1,27 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e17f4ac-5b62-4f3c-b6de-ec090aa7b88a" name="Default" comment="add fibonacci and">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/NthElement.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/list/Fibonacci.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/var/FibonacciInfiniteList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/var/InfiniteList.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/TokenManager.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/TokenManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/tokens/IRange.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/tokens/IRange.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/tokens/dyad/ReverseRepeat.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/tokens/dyad/ReverseRepeat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/util/InputUtil.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/util/InputUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/util/Util.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/util/Util.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/var/IntList.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/var/IntList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/Neim.iml" afterPath="$PROJECT_DIR$/.idea/modules/Neim.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="1e17f4ac-5b62-4f3c-b6de-ec090aa7b88a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/tokens/IRange.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Absolute.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Absolute.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Add.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/Add.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/And.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/And.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/CreateSingletonList.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/CreateSingletonList.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Decrement.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Decrement.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Deltas.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Deltas.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Duplicate.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Duplicate.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/DuplicateFromUnderneath.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/DuplicateFromUnderneath.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Factorial.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Factorial.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Factors.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Factors.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/IRange.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/nilad/IRange.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Increment.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Increment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Input.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/nilad/Input.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/InputLine.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/nilad/InputLine.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/IntegerDivide.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/IntegerDivide.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/IsPalindrome.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/IsPalindrome.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/IsPrime.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/IsPrime.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Join.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Join.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Largest.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Largest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Length.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Length.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Multiply.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/Multiply.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/NPrimes.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/NPrimes.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Not.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Not.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Nothing.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/nilad/Nothing.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/PlusMinus.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/PlusMinus.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/PrimeFactors.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/PrimeFactors.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Product.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Product.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Random.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/nilad/Random.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Range.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Range.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/SelectFirst.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/SelectFirst.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/SelectLast.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/SelectLast.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Smallest.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Smallest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Substrings.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Substrings.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Sum.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Sum.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/UniquePrimeFactors.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/UniquePrimeFactors.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Uniquify.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Uniquify.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/Variable.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/nilad/Variable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/NthElement.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/NthElement.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -54,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="98" column="32" lean-forward="false" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
+              <caret line="101" column="20" lean-forward="false" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -63,49 +84,13 @@
       <file leaf-file-name="NthElement.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/NthElement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+            <state relative-caret-position="198">
+              <caret line="9" column="55" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="55" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#445#446#0" expanded="true" />
                 <element signature="e#520#521#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Fibonacci.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/list/Fibonacci.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="70" lean-forward="false" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#281#282#0" expanded="true" />
-                <element signature="e#358#359#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InfiniteList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/var/InfiniteList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="21" />
-              <folding>
-                <element signature="e#190#191#0" expanded="true" />
-                <element signature="e#230#231#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/var/IntList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -490,8 +475,16 @@
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/list/Fibonacci.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/var/InfiniteList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/NthElement.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/var/FibonacciInfiniteList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/SelectFirst.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Absolute.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/Add.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/And.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/CreateSingletonList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Duplicate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/DuplicateFromUnderneath.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/nilad/Variable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/NthElement.java" />
       </list>
     </option>
   </component>
@@ -714,7 +707,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dyad" />
+              <option name="myItemId" value="monad" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -996,7 +989,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495556368344</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add tokens">
+      <created>1495559214362</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1495559214362</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1013,7 +1013,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22763307" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30237827" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1038,10 +1038,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="fix select last" />
     <MESSAGE value="add inclusive for each" />
     <MESSAGE value="fix input" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix input" />
+    <MESSAGE value="add tokens" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tokens" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1103,7 +1105,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/SelectFirst.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/SelectFirst.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="17" column="44" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="17" selection-end-column="44" />
@@ -1113,7 +1115,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/SelectLast.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/SelectLast.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
@@ -1149,17 +1151,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/IRange.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="12" column="38" lean-forward="false" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="e#316#317#0" expanded="false" />
-            <element signature="e#391#392#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/var/VarInteger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
@@ -1176,16 +1167,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/SelectFirst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/special/InclusiveForEach.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -1196,7 +1177,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/SelectLast.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/SelectLast.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
@@ -1294,14 +1275,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="98" column="32" lean-forward="false" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/var/FibonacciInfiniteList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -1321,6 +1294,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/SelectFirst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/list/Fibonacci.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -1333,11 +1314,103 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Absolute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/CreateSingletonList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Duplicate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/DuplicateFromUnderneath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/nilad/IRange.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="12" column="38" lean-forward="false" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+          <folding>
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/IntegerDivide.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/NPrimes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/And.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/nilad/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/Add.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="101" column="20" lean-forward="false" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/NthElement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        <state relative-caret-position="198">
+          <caret line="9" column="55" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="55" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#445#446#0" expanded="true" />
             <element signature="e#520#521#0" expanded="true" />
           </folding>

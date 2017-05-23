@@ -2,9 +2,12 @@ package me.okx.neim.token;
 
 import lombok.Getter;
 import me.okx.neim.stack.NStack;
-import me.okx.neim.token.tokens.*;
 import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.list.Fibonacci;
+import me.okx.neim.token.tokens.monad.*;
+import me.okx.neim.token.tokens.nilad.*;
+import me.okx.neim.token.tokens.dyad.IntegerDivide;
+import me.okx.neim.token.tokens.monad.IsPalindrome;
 import me.okx.neim.token.tokens.special.ForEach;
 import me.okx.neim.token.tokens.special.InclusiveForEach;
 import me.okx.neim.token.tokens.special.Keep;
