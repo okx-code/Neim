@@ -4,10 +4,9 @@ import lombok.Getter;
 import me.okx.neim.stack.NStack;
 import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.list.Fibonacci;
+import me.okx.neim.token.tokens.list.Polygonal;
 import me.okx.neim.token.tokens.monad.*;
 import me.okx.neim.token.tokens.nilad.*;
-import me.okx.neim.token.tokens.dyad.IntegerDivide;
-import me.okx.neim.token.tokens.monad.IsPalindrome;
 import me.okx.neim.token.tokens.special.ForEach;
 import me.okx.neim.token.tokens.special.InclusiveForEach;
 import me.okx.neim.token.tokens.special.Keep;
@@ -61,6 +60,7 @@ public class TokenManager {
         tokens.put("U", new DuplicateFromUnderneath());
 
         tokens.put("f", new Fibonacci());
+        tokens.put("p", new Polygonal());
 
         tokens.put("𝐀", new Absolute());
         tokens.put("𝐁", new Substrings());
@@ -243,7 +243,7 @@ public class TokenManager {
             }
             stack.add(result);
             return;
-        } else if(d instanceof VectorisableDyadIntList && a instanceof IntList) {
+        } else if(d instanceof VectorisableDyadIntList && a instanceof IntList && b instanceof IntList) {
             IntList aList, bList = (IntList) b;
             if(a instanceof IntList) {
                 aList = (IntList) a;
