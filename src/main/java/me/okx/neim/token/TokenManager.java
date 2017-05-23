@@ -5,6 +5,7 @@ import me.okx.neim.stack.NStack;
 import me.okx.neim.token.tokens.*;
 import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.special.ForEach;
+import me.okx.neim.token.tokens.special.InclusiveForEach;
 import me.okx.neim.token.tokens.special.Keep;
 import me.okx.neim.token.types.*;
 import me.okx.neim.token.types.vectorisable.Vectorisable;
@@ -39,6 +40,7 @@ public class TokenManager {
         tokens.put("₃", new InputLine(2, input));
 
         special.put("Γ", new ForEach());
+        special.put("Δ", new InclusiveForEach());
 
         tokens.put("Θ", new Variable(thetaValue));
 
