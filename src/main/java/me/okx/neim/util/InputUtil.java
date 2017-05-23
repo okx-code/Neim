@@ -67,7 +67,7 @@ public class InputUtil {
                 }
             }
         } else {
-            while(inputs.size() <= lineNumber % len) {
+            while(inputs.size() < lineNumber % len) {
                 if(sc.hasNextLine()) {
                     line(-1);
                 } else {
@@ -76,7 +76,7 @@ public class InputUtil {
                     }
                 }
             }
-            line = inputs.get(lineNumber);
+            line = inputs.get(lineNumber % len);
         }
         return line;
     }
