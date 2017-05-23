@@ -14,6 +14,7 @@ import me.okx.neim.token.tokens.special.Keep;
 import me.okx.neim.token.types.*;
 import me.okx.neim.token.types.vectorisable.Vectorisable;
 import me.okx.neim.token.types.vectorisable.VectorisableDyadIntInt;
+import me.okx.neim.token.types.vectorisable.VectorisableDyadIntList;
 import me.okx.neim.token.types.vectorisable.VectorisableDyadListInt;
 import me.okx.neim.util.InputUtil;
 import me.okx.neim.util.Util;
@@ -111,6 +112,8 @@ public class TokenManager {
         for(int i = 0; i < lowerGreek.length(); i++) {
             tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(i+10));
         }
+
+        // f𝕕𝐅f𝕕
     }
 
     public void handleTokens(String program) {
@@ -222,20 +225,39 @@ public class TokenManager {
             }
             stack.add(list);
             return;
-        } else if(d instanceof VectorisableDyadListInt && a instanceof IntList) {
+        } else if(d instanceof VectorisableDyadListInt && b instanceof IntList) {
             IntList bList, aList = (IntList) a;
             if(b instanceof IntList) {
                 bList = (IntList) b;
             } else {
                 bList = Util.createSingletonList((VarInteger) b);
             }
+            IntList result = new IntList();
             for(int i = 0; i  < bList.size(); i++) {
                 VarInteger bInt = bList.get(i);
                 NStack run = d.dyad(aList, bInt);
                 for(Object o : run) {
-                    stack.add(o);
+                    result.add((VarInteger) o);
                 }
             }
+            stack.add(result);
+            return;
+        } else if(d instanceof VectorisableDyadIntList && a instanceof IntList) {
+            IntList aList, bList = (IntList) b;
+            if(a instanceof IntList) {
+                aList = (IntList) a;
+            } else {
+                aList = Util.createSingletonList((VarInteger) a);
+            }
+            IntList result = new IntList();
+            for(int i = 0; i  < aList.size(); i++) {
+                VarInteger aInt = aList.get(i);
+                NStack run = d.dyad(aInt, bList);
+                for(Object o : run) {
+                    result.add((VarInteger) o);
+                }
+            }
+            stack.add(result);
             return;
         }
         stack.addAll(d.dyad(a, b));
@@ -246,9 +268,7 @@ public class TokenManager {
     }
 
     public void outputStack() {
-        for(Object elem : stack) {
-            System.out.println(String.valueOf(elem));
-        }
+        System.out.print(stackAsString());
     }
 
     public String stackAsString() {

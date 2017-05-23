@@ -32,7 +32,7 @@ public class IntList extends ArrayList<VarInteger> {
 
     @Override
     public String toString() {
-        StringBuilder strb = new StringBuilder();
+        StringBuilder strb = new StringBuilder("[");
         for (int k = 0; k < this.size(); k++) {
             if (k != 0) {
                 strb.append(" ");
