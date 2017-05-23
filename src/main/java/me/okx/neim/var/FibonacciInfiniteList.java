@@ -7,9 +7,9 @@ public class FibonacciInfiniteList extends InfiniteList {
         if (internalList.size() > index) {
             v.setValue(internalList.get(index));
         } else {
-            int a = 0;
-            int b = 1;
-            int tmp;
+            long a = 0;
+            long b = 1;
+            long tmp;
             for (int i = 0; i < index; i++) {
                 tmp = a;
                 a = a + b;

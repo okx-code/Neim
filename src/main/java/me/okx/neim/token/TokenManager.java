@@ -92,6 +92,7 @@ public class TokenManager {
         tokens.put("𝔼", new Equal());
         tokens.put("𝕄", new Modulo());
         tokens.put("𝕆", new Or());
+        tokens.put("ℙ", new PolygonalNumber());
         tokens.put("ℝ", new Repeat());
         tokens.put("𝕊", new Subtract());
         tokens.put("𝕋", new Multiply());

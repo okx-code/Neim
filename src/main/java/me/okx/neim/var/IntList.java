@@ -39,6 +39,7 @@ public class IntList extends ArrayList<VarInteger> {
             }
             strb.append(this.get(k).getValue());
         }
+        strb.append("]");
         return strb.toString();
     }
 
