@@ -36,4 +36,23 @@ public class InfiniteList extends IntList {
         sb.append("]");
         return sb.toString();
     }
+
+    @Override
+    public boolean contains(Object obj) {
+        // assumes list is incrementing
+        if(!(obj instanceof VarInteger)) {
+            return false;
+        }
+        long a = ((VarInteger) obj).getValue();
+        int n = 0;
+        while(true) {
+            long get = get(n).getValue();
+            if(get == a) {
+                return true;
+            } else if(get > a) {
+                return false;
+            }
+            n++;
+        }
+    }
 }

@@ -9,7 +9,6 @@ public class PolygonalInfiniteList extends InfiniteList {
 
     @Override
     public VarInteger get(int index) {
-        index++;
         long n = index;
         n = (n*n*(s-2)-n*(s-4))/2;
 
