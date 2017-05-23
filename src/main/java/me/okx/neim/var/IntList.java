@@ -1,6 +1,7 @@
 package me.okx.neim.var;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class IntList extends ArrayList<VarInteger> {
     public IntList(ArrayList<VarInteger> arr) {
@@ -100,5 +101,10 @@ public class IntList extends ArrayList<VarInteger> {
             str.append(this.get(i));
         }
         return new VarInteger(str.toString());
+    }
+
+    public IntList reverse() {
+        Collections.reverse(this);
+        return this;
     }
 }
