@@ -13,7 +13,7 @@ public class InputUtil {
     private List<String> inputs = new ArrayList<>();
     private InputStream inputStream = System.in;
     private Scanner sc = new Scanner(inputStream);
-    private int len = 1;
+    private int len = 10000;
 
     public void setInputStream(InputStream is) {
         inputStream = is;
@@ -67,16 +67,13 @@ public class InputUtil {
                 }
             }
         } else {
-            while(inputs.size() < lineNumber % len) {
+            while(inputs.size() < (lineNumber)+1) {
                 if(sc.hasNextLine()) {
                     line(-1);
-                } else {
-                    if(len <= 1) {
-                        len = inputs.size();
-                    }
+                    len = inputs.size();
                 }
             }
-            line = inputs.get(lineNumber % len);
+            line = inputs.get(((lineNumber) % (len)));
         }
         return line;
     }
