@@ -4,6 +4,7 @@ import lombok.Getter;
 import me.okx.neim.stack.NStack;
 import me.okx.neim.token.tokens.*;
 import me.okx.neim.token.tokens.dyad.*;
+import me.okx.neim.token.tokens.list.Fibonacci;
 import me.okx.neim.token.tokens.special.ForEach;
 import me.okx.neim.token.tokens.special.InclusiveForEach;
 import me.okx.neim.token.tokens.special.Keep;
@@ -55,6 +56,8 @@ public class TokenManager {
         tokens.put("R", new Random());
         tokens.put("U", new DuplicateFromUnderneath());
 
+        tokens.put("f", new Fibonacci());
+
         tokens.put("𝐀", new Absolute());
         tokens.put("𝐁", new Substrings());
         tokens.put("𝐄", new IsPalindrome());
@@ -93,6 +96,7 @@ public class TokenManager {
         tokens.put("𝕏", new XRange());
         tokens.put("𝕒", new And());
         tokens.put("𝕔", new ClosestTo());
+        tokens.put("𝕕", new NthElement());
         tokens.put("𝕖", new SelectFirst());
         tokens.put("𝕗", new SelectLast());
         tokens.put("𝕚", new Contains());
