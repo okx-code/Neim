@@ -27,9 +27,10 @@ public class Keep implements Special {
         for(int i = 0; i < list.size(); i++) {
             VarInteger var = list.get(i).clone();
             tm = new TokenManager();
-            tm.registerTokens(var.getValue());
+            tm.registerTokens(var.getValue(), i);
             tm.getInput().setInputStream(stack.getInput().getInputStream());
             tm.getInput().setInputs(stack.getInput().getInputs());
+            tm.getStack().add(stack);
             tm.getStack().push(var);
             tm.handleTokens(data.getValue());
             Object pop = tm.getStack().pop();

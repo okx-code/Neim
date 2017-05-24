@@ -28,12 +28,14 @@ public class InclusiveForEach implements Special {
         }
         TokenManager tm;
         IntList finished = new IntList();
-        for(VarInteger var : a) {
+        for(int i = 0; i < a.size(); i++) {
+            VarInteger var = a.get(i);
             tm = new TokenManager();
             tm.getInput().setInputStream(stack.getInput().getInputStream());
             tm.getInput().setInputs(stack.getInput().getInputs());
+            tm.getStack().addAll(stack);
             tm.getStack().push(var);
-            tm.registerTokens(var.getValue());
+            tm.registerTokens(var.getValue(), i);
             tm.handleTokens(value);
             finished.add((VarInteger) tm.getStack().pop());
         }

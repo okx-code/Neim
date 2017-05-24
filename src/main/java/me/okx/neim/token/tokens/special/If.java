@@ -26,8 +26,10 @@ public class If implements Special {
         TokenManager tm = new TokenManager();
         tm.getInput().setInputStream(stack.getInput().getInputStream());
         tm.getInput().setInputs(stack.getInput().getInputs());
+        tm.getStack().addAll(stack);
         tm.registerTokens(100);
         tm.handleTokens(value);
+        stack.clear();
         stack.addAll(tm.getStack());
         return stack;
     }

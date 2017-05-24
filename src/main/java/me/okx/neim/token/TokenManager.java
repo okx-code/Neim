@@ -42,6 +42,10 @@ public class TokenManager {
     }
 
     public void registerTokens(long thetaValue) {
+        registerTokens(thetaValue, 256);
+    }
+
+    public void registerTokens(long thetaValue, long index) {
         tokens.put("₁", new InputLine(0, input));
         tokens.put("₂", new InputLine(1, input));
         tokens.put("₃", new InputLine(2, input));
@@ -50,6 +54,7 @@ public class TokenManager {
         special.put("Δ", new InclusiveForEach());
 
         tokens.put("Θ", new Variable(thetaValue));
+        tokens.put("Φ", new Variable(index));
 
         special.put("Λ", new Keep(1)); // keep values only equal to one
 
