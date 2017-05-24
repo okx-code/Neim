@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e17f4ac-5b62-4f3c-b6de-ec090aa7b88a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/stack/NStackBuilder.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/stack/NStackBuilder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/TokenManager.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/TokenManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/tokens/special/ForEach.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/tokens/special/ForEach.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/tokens/special/Keep.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/tokens/special/Keep.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/stack/NStackBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/stack/NStackBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/CreateSingletonList.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/CreateSingletonList.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -82,15 +78,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="TokenManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TokenManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="126" column="11" lean-forward="true" selection-start-line="126" selection-start-column="11" selection-end-line="126" selection-end-column="11" />
+            <state relative-caret-position="418">
+              <caret line="89" column="33" lean-forward="false" selection-start-line="89" selection-start-column="33" selection-end-line="89" selection-end-column="33" />
               <folding>
                 <element signature="e#9735#9736#0" expanded="true" />
                 <element signature="e#9798#9799#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateSingletonList.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/CreateSingletonList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -524,7 +530,6 @@
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Absolute.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/Add.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/And.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/CreateSingletonList.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Duplicate.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/nilad/Variable.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/NthElement.java" />
@@ -544,10 +549,11 @@
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/special/InclusiveForEach.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/special/If.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/special/Keep.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/stack/NStackBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/DuplicateFromUnderneath.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/special/ForEach.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/stack/NStackBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/CreateSingletonList.java" />
       </list>
     </option>
   </component>
@@ -1162,7 +1168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495640842262</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="optimisations">
+      <created>1495643407596</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1495643407596</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1251,7 +1264,8 @@
     <MESSAGE value="add sort token" />
     <MESSAGE value="changes to special tokens" />
     <MESSAGE value="optimisations" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimisations" />
+    <MESSAGE value="createsingletonlist only on varinteger" />
+    <option name="LAST_COMMIT_MESSAGE" value="createsingletonlist only on varinteger" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1342,13 +1356,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/Absolute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/CreateSingletonList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
@@ -1616,14 +1623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/stack/NStackBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/special/ForEach.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
@@ -1634,12 +1633,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="126" column="11" lean-forward="true" selection-start-line="126" selection-start-column="11" selection-end-line="126" selection-end-column="11" />
+        <state relative-caret-position="418">
+          <caret line="89" column="33" lean-forward="false" selection-start-line="89" selection-start-column="33" selection-end-line="89" selection-end-column="33" />
           <folding>
             <element signature="e#9735#9736#0" expanded="true" />
             <element signature="e#9798#9799#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/stack/NStackBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="e#218#219#0" expanded="true" />
+            <element signature="e#258#259#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/monad/CreateSingletonList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

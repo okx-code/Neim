@@ -8,6 +8,10 @@ public class NStackBuilder {
         stack.push(elem);
     }
 
+    public NStackBuilder() {
+        stack = new NStack(null);
+    }
+
     public NStackBuilder add(Object elem) {
         stack.push(elem);
         return this;
