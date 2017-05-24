@@ -5,6 +5,8 @@ import me.okx.neim.stack.NStack;
 import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.list.Fibonacci;
 import me.okx.neim.token.tokens.list.Polygonal;
+import me.okx.neim.token.tokens.list.Squares;
+import me.okx.neim.token.tokens.list.Triangulars;
 import me.okx.neim.token.tokens.monad.*;
 import me.okx.neim.token.tokens.nilad.*;
 import me.okx.neim.token.tokens.special.ForEach;
@@ -66,6 +68,8 @@ public class TokenManager {
 
         tokens.put("f", new Fibonacci());
         tokens.put("p", new Polygonal());
+        tokens.put("t", new Triangulars());
+        tokens.put("q", new Squares());
 
         tokens.put("𝐀", new Absolute());
         tokens.put("𝐁", new Substrings());
