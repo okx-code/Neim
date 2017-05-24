@@ -128,8 +128,6 @@ public class TokenManager {
         for(int i = 0; i < lowerGreek.length(); i++) {
             tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(i+10));
         }
-
-        // f𝕕𝐅f𝕕
     }
 
     public void handleTokens(String program) {

@@ -9,7 +9,7 @@ public class NStackBuilder {
     }
 
     public NStackBuilder add(Object elem) {
-        stack.add(elem);
+        stack.push(elem);
         return this;
     }
 
