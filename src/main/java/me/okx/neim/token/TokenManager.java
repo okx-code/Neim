@@ -8,6 +8,7 @@ import me.okx.neim.token.tokens.list.Polygonal;
 import me.okx.neim.token.tokens.monad.*;
 import me.okx.neim.token.tokens.nilad.*;
 import me.okx.neim.token.tokens.special.ForEach;
+import me.okx.neim.token.tokens.special.If;
 import me.okx.neim.token.tokens.special.InclusiveForEach;
 import me.okx.neim.token.tokens.special.Keep;
 import me.okx.neim.token.types.*;
@@ -49,6 +50,9 @@ public class TokenManager {
         tokens.put("Θ", new Variable(thetaValue));
 
         special.put("Λ", new Keep(1)); // keep values only equal to one
+
+        special.put("Ξ", new If());
+
         special.put("Σ", new Keep(0)); // keep values only equal to zero
 
         tokens.put(" ", new Nothing());
