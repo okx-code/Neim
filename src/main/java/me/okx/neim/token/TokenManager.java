@@ -57,6 +57,7 @@ public class TokenManager {
         tokens.put("D", new Duplicate());
         tokens.put("I", new Input(input));
         tokens.put("R", new Random());
+        tokens.put("S", new Swap());
         tokens.put("U", new DuplicateFromUnderneath());
 
         tokens.put("f", new Fibonacci());
