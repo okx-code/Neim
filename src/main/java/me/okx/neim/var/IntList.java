@@ -26,6 +26,11 @@ public class IntList extends ArrayList<VarInteger> {
 
     }
 
+    @Override
+    public VarInteger get(int index) {
+        return super.get(index).clone();
+    }
+
     public void addInt(long n) {
         this.add(new VarInteger(n));
     }
