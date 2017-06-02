@@ -86,6 +86,7 @@ public class TokenManager {
         tokens.put("𝐍", new PlusMinus());
         tokens.put("𝐎", new Not());
         tokens.put("𝐏", new PrimeFactors());
+        tokens.put("𝐐", new AllEqual());
         tokens.put("𝐑", new Range());
         tokens.put("𝐒", new CreateSingletonList());
         tokens.put("𝐓", new Factorial());

@@ -7,18 +7,27 @@ import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Sort implements Monad<IntList> {
+public class Sort implements Monad<Object> {
 
     @Override
-    public NStack monad(IntList a) {
-        List<Long> vals = new ArrayList<>();
-        for(VarInteger val : a) {
-            vals.add(val.getValue());
+    public NStack monad(Object a) {
+        Object finished;
+        if(a instanceof IntList) {
+            List<Long> vals = new ArrayList<>();
+            for (VarInteger val : (IntList) a) {
+                vals.add(val.getValue());
+            }
+            Collections.sort(vals);
+            finished = new IntList(vals);
+        } else {
+            char[] chars = a.toString().toCharArray();
+            Arrays.sort(chars);
+            finished = new VarInteger(new String(chars));
         }
-        Collections.sort(vals);
-        return new NStackBuilder(new IntList(vals)).build();
+        return new NStackBuilder(finished).build();
     }
 }

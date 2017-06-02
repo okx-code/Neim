@@ -135,6 +135,14 @@ public class VarInteger implements Cloneable {
         return list;
     }
 
+    public IntList chars() {
+        IntList chars = new IntList();
+        for(char c : this.toString().toCharArray()) {
+            chars.add(new VarInteger(c));
+        }
+        return chars;
+    }
+
     private static int popCount(int n) {
         n -= (n >>> 1) & 0x55555555;
         n = ((n >>> 2) & 0x33333333) + (n & 0x33333333);
