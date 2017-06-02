@@ -235,7 +235,9 @@ public class TokenManager {
             for(int i = 0; i < bList.size(); i++) {
                 VarInteger bInt = bList.get(i);
                 VarInteger aInt = aList.get(i);
-                list.addAll(d.dyad(aInt, bInt));
+                for(Object elem : d.dyad(aInt, bInt)) {
+                    list.addInt(((VarInteger) elem).getValue());
+                }
             }
             stack.add(list);
             return;
