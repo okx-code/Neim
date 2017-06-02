@@ -13,6 +13,7 @@ import me.okx.neim.token.tokens.special.ForEach;
 import me.okx.neim.token.tokens.special.If;
 import me.okx.neim.token.tokens.special.InclusiveForEach;
 import me.okx.neim.token.tokens.special.Keep;
+import me.okx.neim.token.tokens.twotoken.ShortForEach;
 import me.okx.neim.token.types.*;
 import me.okx.neim.token.types.vectorisable.Vectorisable;
 import me.okx.neim.token.types.vectorisable.VectorisableDyadIntInt;
@@ -29,6 +30,7 @@ import java.util.Map;
 public class TokenManager {
     private Map<String, Token> tokens;
     private Map<String, Special> special;
+    private Map<String, TwoToken> twoToken;
     @Getter
     private InputUtil input;
     @Getter
@@ -38,6 +40,15 @@ public class TokenManager {
         input = new InputUtil();
         tokens = new HashMap<>();
         special = new HashMap<>();
+        twoToken = new HashMap<>();
+        stack = new NStack(input);
+    }
+
+    public TokenManager(InputUtil input) {
+        this.input = input;
+        tokens = new HashMap<>();
+        special = new HashMap<>();
+        twoToken = new HashMap<>();
         stack = new NStack(input);
     }
 
@@ -61,6 +72,8 @@ public class TokenManager {
         special.put("Ξ", new If());
 
         special.put("Σ", new Keep(0)); // keep values only equal to zero
+
+        twoToken.put("Ψ", new ShortForEach());
 
         tokens.put(" ", new Nothing());
         tokens.put(">", new Increment());
@@ -171,6 +184,19 @@ public class TokenManager {
                 i = k;
                 handleSpecial(str, token.toString());
                 token.setLength(0);
+            } else if(twoToken.containsKey(str)) {
+                 token.setLength(0);
+                 int k = i+1;
+                 StringBuilder sb = new StringBuilder();
+                 for(; k < chars.length; k++) {
+                     sb.append(chars[k]);
+                     if(tokens.containsKey(sb.toString())) {
+                         TwoToken tt = twoToken.get(str);
+                         stack = tt.twoToken(stack, sb.toString());
+                         break;
+                     }
+                 }
+                 i = k;
             }
         }
         if(!integer.isEmpty()) {
@@ -178,9 +204,13 @@ public class TokenManager {
         }
     }
 
-    private void handleToken(String str) {
+    public void handleToken(String str) {
         Token t = tokens.get(str);
         run(t);
+    }
+
+    public void handleToken(Token token) {
+        run(token);
     }
 
     private void handleSpecial(String str, String val) {
