@@ -14,6 +14,7 @@ import me.okx.neim.token.tokens.special.ForEach;
 import me.okx.neim.token.tokens.special.If;
 import me.okx.neim.token.tokens.special.InclusiveForEach;
 import me.okx.neim.token.tokens.special.Keep;
+import me.okx.neim.token.tokens.twotoken.Assign;
 import me.okx.neim.token.tokens.twotoken.ShortForEach;
 import me.okx.neim.token.types.*;
 import me.okx.neim.token.types.vectorisable.Vectorisable;
@@ -71,6 +72,8 @@ public class TokenManager {
         special.put("Λ", new Keep(1)); // keep values only equal to one
 
         special.put("Ξ", new If());
+
+        twoToken.put("Π", new Assign());
 
         special.put("Σ", new Keep(0)); // keep values only equal to zero
 
@@ -144,6 +147,12 @@ public class TokenManager {
         for(int i = 0; i < lowerGreek.length(); i++) {
             tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(i+10));
         }
+
+        // β 6Πββ
+    }
+
+    public void registerVariable(String name, Object value) {
+        tokens.put(name, new Variable(value));
     }
 
     public void handleTokens(String program) {
@@ -194,7 +203,7 @@ public class TokenManager {
                      sb.append(chars[k]);
                      if(tokens.containsKey(sb.toString())) {
                          TwoToken tt = twoToken.get(str);
-                         stack = tt.twoToken(stack, sb.toString());
+                         stack = tt.twoToken(stack, sb.toString(), this);
                          break;
                      }
                  }
