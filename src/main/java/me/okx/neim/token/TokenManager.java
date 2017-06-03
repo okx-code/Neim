@@ -2,6 +2,7 @@ package me.okx.neim.token;
 
 import lombok.Getter;
 import me.okx.neim.stack.NStack;
+import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.list.Fibonacci;
 import me.okx.neim.token.tokens.list.Polygonal;
@@ -206,11 +207,10 @@ public class TokenManager {
 
     public void handleToken(String str) {
         Token t = tokens.get(str);
-        run(t);
-    }
-
-    public void handleToken(Token token) {
-        run(token);
+        NStack ns = run(t);
+        for(Object o : ns) {
+            stack.push(o);
+        }
     }
 
     private void handleSpecial(String str, String val) {
@@ -218,21 +218,37 @@ public class TokenManager {
         runSpecial(sp, val);
     }
 
-    private void run(Token t) {
-        if(t instanceof Nilad) {
-            handleNilad((Nilad) t);
-        } else if(t instanceof Monad) {
-            handleMonad((Monad) t);
-        } else if(t instanceof Dyad) {
-            handleDyad((Dyad) t);
+    private NStack run(Token t) {
+        NStack temp = (NStack) stack.clone();
+        try {
+            if (t instanceof Nilad) {
+                return handleNilad((Nilad) t);
+            } else if (t instanceof Monad) {
+                return handleMonad((Monad) t);
+            } else if (t instanceof Dyad) {
+                return handleDyad((Dyad) t);
+            } else {
+                System.out.println("oops");
+                return null;
+            }
+        } catch(ClassCastException ex) {
+            stack = (NStack) temp.clone();
+            Object pop = stack.pop();
+            if(pop instanceof IntList) {
+                pop = ((IntList) pop).join();
+            } else {
+                pop = ((VarInteger) pop).chars();
+            }
+            stack.push(pop);
+            return run(t);
         }
     }
 
-    private void handleNilad(Nilad n) {
-        stack.addAll(n.nilad());
+    private NStack handleNilad(Nilad n) {
+        return n.nilad();
     }
 
-    private void handleMonad(Monad m) {
+    private NStack handleMonad(Monad m) {
         Object a = stack.pop();
         if(m instanceof Vectorisable && a instanceof IntList) {
             IntList list = (IntList) a;
@@ -240,13 +256,13 @@ public class TokenManager {
             for(VarInteger val : list) {
                 ret.addAll(m.monad(val));
             }
-            stack.add(ret);
+            return new NStackBuilder(ret).build();
         } else {
-            stack.addAll(m.monad(a));
+            return m.monad(a);
         }
     }
 
-    private void handleDyad(Dyad d) {
+    private NStack handleDyad(Dyad d) {
         Object b = stack.pop();
         Object a = stack.pop();
         if(d instanceof VectorisableDyadIntInt && (b instanceof IntList || a instanceof IntList)) {
@@ -270,8 +286,7 @@ public class TokenManager {
                     list.addInt(((VarInteger) elem).getValue());
                 }
             }
-            stack.add(list);
-            return;
+            return new NStackBuilder(list).build();
         } else if(d instanceof VectorisableDyadListInt && b instanceof IntList) {
             IntList bList, aList = (IntList) a;
             if(b instanceof IntList) {
@@ -287,8 +302,7 @@ public class TokenManager {
                     result.add((VarInteger) o);
                 }
             }
-            stack.add(result);
-            return;
+            return new NStackBuilder(result).build();
         } else if(d instanceof VectorisableDyadIntList && a instanceof IntList && b instanceof IntList) {
             IntList aList, bList = (IntList) b;
             if(a instanceof IntList) {
@@ -304,10 +318,9 @@ public class TokenManager {
                     result.add((VarInteger) o);
                 }
             }
-            stack.add(result);
-            return;
+            return new NStackBuilder(result).build();
         }
-        stack.addAll(d.dyad(a, b));
+        return d.dyad(a, b);
     }
 
     private void runSpecial(Special sp, String val) {

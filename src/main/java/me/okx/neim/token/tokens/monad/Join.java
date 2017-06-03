@@ -9,6 +9,6 @@ public class Join implements Monad<IntList> {
 
     @Override
     public NStack monad(IntList a) {
-        return new NStackBuilder(a.join("")).build();
+        return new NStackBuilder(a.join()).build();
     }
 }

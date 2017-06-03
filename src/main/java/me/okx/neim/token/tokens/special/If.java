@@ -18,7 +18,7 @@ public class If implements Special {
         if(top instanceof VarInteger) {
             a = ((VarInteger) top).getValue() == 1;
         } else {
-            a = ((IntList) top).contains(1);
+            a = ((IntList) top).contains(new VarInteger(1));
         }
         if(!a) {
             return stack;

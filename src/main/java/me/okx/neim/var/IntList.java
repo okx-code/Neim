@@ -98,11 +98,11 @@ public class IntList extends ArrayList<VarInteger> {
         return new VarInteger(closestValue);
     }
 
-    public VarInteger join(String delimiter) {
+    public VarInteger join() {
         StringBuilder str = new StringBuilder();
         for(int i = 0; i < this.size(); i++) {
             if(i != 0) {
-                str.append(delimiter);
+                str.append("");
             }
             str.append(this.get(i));
         }

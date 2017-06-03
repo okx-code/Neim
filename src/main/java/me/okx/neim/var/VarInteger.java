@@ -138,7 +138,7 @@ public class VarInteger implements Cloneable {
     public IntList chars() {
         IntList chars = new IntList();
         for(char c : this.toString().toCharArray()) {
-            chars.add(new VarInteger(c));
+            chars.add(new VarInteger(String.valueOf(c)));
         }
         return chars;
     }
