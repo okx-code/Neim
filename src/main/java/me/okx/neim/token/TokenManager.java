@@ -92,6 +92,7 @@ public class TokenManager {
 
         tokens.put("𝐀", new Absolute());
         tokens.put("𝐁", new Substrings());
+        tokens.put("𝐂", new Chars());
         tokens.put("𝐄", new IsPalindrome());
         tokens.put("𝐅", new Factors());
         tokens.put("𝐈", new IRange());
