@@ -24,13 +24,23 @@ public class Base255 implements Special {
 
         List<String> codepage = new ArrayList<>(Arrays.asList(Util.getCodepage()));
         codepage.remove(")");
+
+        String actual = "";
+
         for(char c : value.toCharArray()) {
-            String cc = String.valueOf(c);
-            int index = codepage.indexOf(cc);
+            actual += c;
+
+            if(!codepage.contains(actual)) {
+                continue;
+            }
+
+            int index = codepage.indexOf(actual);
 
             total += Math.pow(255, pow)*index;
 
             pow++;
+
+            actual = "";
         }
 
         stack.push(new VarInteger(total));
