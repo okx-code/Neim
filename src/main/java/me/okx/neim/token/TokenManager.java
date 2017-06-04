@@ -145,11 +145,24 @@ public class TokenManager {
 
         tokens.put("α", new Variable(-1));
         String lowerGreek = "βγδεζηθικλμνξπρσςτυφχψω";
+        int nums = 10;
         for(int i = 0; i < lowerGreek.length(); i++) {
-            tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(i+10));
+            tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(nums));
+            nums++;
         }
 
-        // β 6Πββ
+        for(String s : Util.getCodepage()) {
+            if(!exists(s)) {
+                tokens.put(s, new Variable(nums));
+                nums++;
+            }
+        }
+    }
+
+    public boolean exists(String name) {
+        return tokens.containsKey(name)
+                || twoToken.containsKey(name)
+                || special.containsKey(name);
     }
 
     public void registerVariable(String name, Object value) {
