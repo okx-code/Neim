@@ -61,6 +61,9 @@ public class TokenManager {
         tokens.put("₃", new InputLine(2, input));
 
         special.put("Γ", new ForEach());
+
+        tokens.put("\n", new Nothing());
+
         special.put("Δ", new InclusiveForEach());
 
         tokens.put("Θ", new Variable(thetaValue));
