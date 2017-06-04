@@ -142,6 +142,7 @@ public class TokenManager {
         tokens.put("𝕖", new SelectFirst());
         tokens.put("𝕗", new SelectLast());
         tokens.put("𝕘", new RemoveFirst());
+        tokens.put("𝕙", new RemoveLast());
         tokens.put("𝕚", new Contains());
         tokens.put("𝕞", new MultipleOf());
         tokens.put("𝕣", new ReverseRepeat());

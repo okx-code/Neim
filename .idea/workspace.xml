@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e17f4ac-5b62-4f3c-b6de-ec090aa7b88a" name="Default" comment="add removefirst and removelast">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/RemoveFirst.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/tokens/dyad/RemoveLast.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/TokenManager.class" afterPath="$PROJECT_DIR$/build/classes/main/me/okx/neim/token/TokenManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/libs/Neim-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/build/libs/Neim-1.0-SNAPSHOT.jar" />
+    <list default="true" id="1e17f4ac-5b62-4f3c-b6de-ec090aa7b88a" name="Default" comment="actually add the removelast token">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java" />
     </list>
@@ -84,8 +80,8 @@
       <file leaf-file-name="TokenManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="143" column="20" lean-forward="false" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="21" />
+            <state relative-caret-position="157">
+              <caret line="144" column="42" lean-forward="false" selection-start-line="144" selection-start-column="42" selection-end-line="144" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -143,7 +139,6 @@
       <find>get</find>
       <find>tostring</find>
       <find>string</find>
-      <find>factors</find>
       <find>square</find>
       <find>infinitelist</find>
       <find>contains</find>
@@ -164,6 +159,7 @@
       <find>system.o</find>
       <find>'</find>
       <find>chars</find>
+      <find>factors</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;</replace>
@@ -1537,7 +1533,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496594471831</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="add removefirt and removelast tokens">
+      <created>1496597205903</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1496597205903</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1610,7 +1613,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="add contains for infinite list" />
     <MESSAGE value="add swap token" />
     <MESSAGE value="add if" />
     <MESSAGE value="add polygonal number shortcuts" />
@@ -1635,7 +1637,8 @@
     <MESSAGE value="fix base 255 compression" />
     <MESSAGE value="add -v flag" />
     <MESSAGE value="start transition to bigintegers" />
-    <option name="LAST_COMMIT_MESSAGE" value="start transition to bigintegers" />
+    <MESSAGE value="add removefirt and removelast tokens" />
+    <option name="LAST_COMMIT_MESSAGE" value="add removefirt and removelast tokens" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2062,8 +2065,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/okx/neim/token/TokenManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="143" column="20" lean-forward="false" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="21" />
+        <state relative-caret-position="157">
+          <caret line="144" column="42" lean-forward="false" selection-start-line="144" selection-start-column="42" selection-end-line="144" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
