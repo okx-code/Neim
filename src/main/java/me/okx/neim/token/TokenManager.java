@@ -5,6 +5,7 @@ import me.okx.neim.stack.NStack;
 import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.list.*;
+import me.okx.neim.token.tokens.manipulator.WrapToArray;
 import me.okx.neim.token.tokens.monad.*;
 import me.okx.neim.token.tokens.nilad.*;
 import me.okx.neim.token.tokens.special.*;
@@ -28,6 +29,7 @@ public class TokenManager {
     private Map<String, Token> tokens;
     private Map<String, Special> special;
     private Map<String, TwoToken> twoToken;
+    private Map<String, Manipulator> manipulator;
     @Getter
     private InputUtil input;
     @Getter
@@ -35,6 +37,7 @@ public class TokenManager {
 
     public TokenManager() {
         input = new InputUtil();
+        manipulator = new HashMap<>();
         tokens = new HashMap<>();
         special = new HashMap<>();
         twoToken = new HashMap<>();
@@ -43,6 +46,7 @@ public class TokenManager {
 
     public TokenManager(InputUtil input) {
         this.input = input;
+        manipulator = new HashMap<>();
         tokens = new HashMap<>();
         special = new HashMap<>();
         twoToken = new HashMap<>();
@@ -78,6 +82,10 @@ public class TokenManager {
         twoToken.put("Ψ", new ShortForEach());
 
         tokens.put(" ", new Nothing());
+
+        special.put("&", new ListConstructor());
+
+        manipulator.put("$", new WrapToArray());
 
         special.put("(", new Base255());
 
@@ -182,6 +190,7 @@ public class TokenManager {
         return tokens.containsKey(name)
                 || twoToken.containsKey(name)
                 || special.containsKey(name)
+                || manipulator.containsKey(name)
                 || name.matches(".*\\d+.*");
     }
 
@@ -209,6 +218,9 @@ public class TokenManager {
             if (tokens.containsKey(str)) {
                 handleToken(str);
                 token.setLength(0);
+            } else if(manipulator.containsKey(str)) {
+                token.setLength(0);
+                stack = manipulator.get(str).manipulator(stack, this);
             } else if(special.containsKey(str)) {
                 token.setLength(0);
                 int k = i+1;

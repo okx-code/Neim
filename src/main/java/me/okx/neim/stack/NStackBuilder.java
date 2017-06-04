@@ -20,4 +20,11 @@ public class NStackBuilder {
     public NStack build() {
         return stack;
     }
+
+    public NStackBuilder addAll(NStack nstack) {
+        for(Object o : nstack) {
+            this.add(o);
+        }
+        return this;
+    }
 }
