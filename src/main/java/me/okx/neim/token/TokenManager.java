@@ -141,6 +141,7 @@ public class TokenManager {
         tokens.put("𝕕", new NthElement());
         tokens.put("𝕖", new SelectFirst());
         tokens.put("𝕗", new SelectLast());
+        tokens.put("𝕘", new RemoveFirst());
         tokens.put("𝕚", new Contains());
         tokens.put("𝕞", new MultipleOf());
         tokens.put("𝕣", new ReverseRepeat());
@@ -273,13 +274,40 @@ public class TokenManager {
             }
         } catch(ClassCastException ex) {
             stack = (NStack) temp.clone();
-            Object pop = stack.pop();
-            if(pop instanceof IntList) {
-                pop = ((IntList) pop).join();
+
+            if(t instanceof VectorisableDyadIntList) {
+                Object b = stack.pop();
+                Object a = stack.pop();
+
+                if(b instanceof VarInteger) {
+                    b = ((VarInteger) b).chars();
+                }
+                if(a instanceof IntList) {
+                    a = ((IntList) a).join();
+                }
+                stack.push(a);
+                stack.push(b);
+            } else if(t instanceof VectorisableDyadListInt) {
+                Object b = stack.pop();
+                Object a = stack.pop();
+
+                if(a instanceof VarInteger) {
+                    a = ((VarInteger) a).chars();
+                }
+                if(b instanceof IntList) {
+                    b = ((IntList) b).join();
+                }
+                stack.push(a);
+                stack.push(b);
             } else {
-                pop = ((VarInteger) pop).chars();
+                Object pop = stack.pop();
+                if (pop instanceof IntList) {
+                    pop = ((IntList) pop).join();
+                } else {
+                    pop = ((VarInteger) pop).chars();
+                }
+                stack.push(pop);
             }
-            stack.push(pop);
             return run(t);
         }
     }
