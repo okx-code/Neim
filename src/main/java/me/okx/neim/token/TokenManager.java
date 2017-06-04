@@ -7,10 +7,7 @@ import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.list.*;
 import me.okx.neim.token.tokens.monad.*;
 import me.okx.neim.token.tokens.nilad.*;
-import me.okx.neim.token.tokens.special.ForEach;
-import me.okx.neim.token.tokens.special.If;
-import me.okx.neim.token.tokens.special.InclusiveForEach;
-import me.okx.neim.token.tokens.special.Keep;
+import me.okx.neim.token.tokens.special.*;
 import me.okx.neim.token.tokens.twotoken.Assign;
 import me.okx.neim.token.tokens.twotoken.ShortForEach;
 import me.okx.neim.token.types.*;
@@ -80,8 +77,12 @@ public class TokenManager {
         twoToken.put("Ψ", new ShortForEach());
 
         tokens.put(" ", new Nothing());
+
+        special.put("(", new Base255());
+
         tokens.put(">", new Increment());
         tokens.put("<", new Decrement());
+        tokens.put("B", new ToBase255());
         tokens.put("D", new Duplicate());
         tokens.put("I", new Input(input));
         tokens.put("R", new Random());
@@ -196,7 +197,7 @@ public class TokenManager {
                 int push = 0;
                 for(; k < chars.length; k++) {
                     String at = String.valueOf(chars[k]);
-                    if(special.containsKey(at)) {
+                    if(special.containsKey(at) && !(special.get(str) instanceof Base255)) {
                         push++;
                     }
                     if(at.equals(")")) {
