@@ -15,12 +15,15 @@ public class Main {
     public static void main(String[] args) throws UnsupportedEncodingException {
         boolean input = false;
         boolean utf8 = true;
+        boolean vars = false;
         if(args.length == 0) {
-            System.out.println("Usage:\n" +
+            System.out.print("Usage:\n" +
                     "    java -jar Neim-1.0-SNAPSHOT.jar -<FLAGS> <FILE>\n" +
                     "Available flags:\n" +
                     "    -i Read a line from STDIN as the program\n" +
                     "    -e Read the file in Neim's encoding\n" +
+                    "    -v Don't actually do anything, just print\n" +
+                    "         all the preset variables\n" +
                     "    (note: flags must be combined. '-ab' is valid but '-a -b' is not)");
             return;
         } if((args.length == 1 || args.length == 2) && args[0].startsWith("-")) {
@@ -30,15 +33,17 @@ public class Main {
                 input = true;
             } if(flags.contains('e')) {
                 utf8 = false;
+            } if (flags.contains('v')) {
+                vars = true;
             }
         }
 
-        String program;
+        String program = null;
 
         if(input) {
             Scanner sc = new Scanner(System.in);
             program = sc.nextLine();
-        } else {
+        } else if(!vars) {
             String file = args[args.length-1];
             byte[] contents;
             try {
@@ -62,7 +67,12 @@ public class Main {
 
         TokenManager tm = new TokenManager();
         tm.registerTokens(100);
-        tm.handleTokens(program);
-        tm.outputStack();
+
+        if(!vars) {
+            tm.handleTokens(program);
+            tm.outputStack();
+        } else {
+            tm.outputVars();
+        }
     }
 }

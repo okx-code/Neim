@@ -160,6 +160,19 @@ public class TokenManager {
         }
     }
 
+    public void outputVars() {
+        for(Map.Entry<String, Token> entry : tokens.entrySet()) {
+            String name = entry.getKey();
+            Token token = entry.getValue();
+
+            if(!(token instanceof Variable)) {
+                continue;
+            }
+
+            System.out.println(name + " : " + ((Variable) token).getValue());
+        }
+    }
+
     public boolean exists(String name) {
         return tokens.containsKey(name)
                 || twoToken.containsKey(name)
