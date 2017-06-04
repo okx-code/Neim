@@ -20,6 +20,7 @@ import me.okx.neim.util.Util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -195,7 +196,7 @@ public class TokenManager {
             if(Util.isInteger(str)) {
                 integer = str;
             } else if(!integer.isEmpty()) {
-                stack.push(new VarInteger(integer));
+                stack.push(new VarInteger(new BigInteger(integer)));
                 integer = "";
                 token.setLength(0);
                 token.append(c);
@@ -240,7 +241,7 @@ public class TokenManager {
             }
         }
         if(!integer.isEmpty()) {
-            stack.push(new VarInteger(integer));
+            stack.push(new VarInteger(new BigInteger(integer)));
         }
     }
 

@@ -6,6 +6,7 @@ import me.okx.neim.token.types.SpecialData;
 import me.okx.neim.util.Util;
 import me.okx.neim.var.VarInteger;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,12 +21,14 @@ public class Base255 implements Special {
         value = new StringBuilder(value).reverse().toString();
 
         int pow = 0;
-        long total = 0;
+        BigInteger total = BigInteger.ZERO;
 
         List<String> codepage = new ArrayList<>(Arrays.asList(Util.getCodepage()));
         codepage.remove(")");
 
         String actual = "";
+
+        BigInteger _255 = BigInteger.valueOf(255);
 
         for(char c : value.toCharArray()) {
             actual += c;
@@ -36,7 +39,7 @@ public class Base255 implements Special {
 
             int index = codepage.indexOf(actual);
 
-            total += Math.pow(255, pow)*index;
+            total = total.add(_255.pow(pow).multiply(BigInteger.valueOf(index)));
 
             pow++;
 

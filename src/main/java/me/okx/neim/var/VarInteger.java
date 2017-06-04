@@ -1,37 +1,50 @@
 package me.okx.neim.var;
 
 
-import lombok.Getter;
-import lombok.Setter;
 import me.okx.neim.util.Util;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class VarInteger implements Cloneable {
-    @Setter
-    @Getter
-    private long value;
+    public long getValue() {
+        return value.longValue();
+    }
+
+    public void setValue(long l) {
+        value = BigInteger.valueOf(l);
+    }
+
+    public BigInteger getBigIntegerValue() {
+        return value;
+    }
+
+    private BigInteger value;
 
     public VarInteger() {
-        this.value = 0;
+        setValue(0);
     }
 
     public VarInteger(long value) {
+        setValue(value);
+    }
+
+    public VarInteger(BigInteger value) {
         this.value = value;
     }
 
     public VarInteger(String str) {
         if(Util.isInteger(str)) {
-            this.value = Long.parseLong(str);
+            setValue(Long.parseLong(str));
         } else {
-            this.value = Util.sumString(str);
+            setValue(Util.sumString(str));
         }
     }
 
     @Override
     public String toString() {
-        return String.valueOf(this.getValue());
+        return value.toString();
     }
 
     @Override
@@ -49,11 +62,11 @@ public class VarInteger implements Cloneable {
 
     @Override
     public int hashCode() {
-        return Integer.parseInt(String.valueOf(this.value % Integer.MAX_VALUE));
+        return Integer.parseInt(String.valueOf(this.getValue() % Integer.MAX_VALUE));
     }
 
     public IntList primeFactors() {
-        long n = this.value;
+        long n = this.getValue();
         IntList factors = new IntList();
         for (int i = 2; i <= n / i; i++) {
             while (n % i == 0) {
@@ -68,12 +81,12 @@ public class VarInteger implements Cloneable {
     }
 
     public VarInteger add(VarInteger to) {
-        this.setValue(this.getValue() + to.getValue());
+        this.value = this.value.add(to.getBigIntegerValue());
         return this;
     }
 
     public VarInteger multiply(VarInteger to) {
-        this.setValue(this.getValue() * to.getValue());
+        this.value = this.value.multiply(to.getBigIntegerValue());
         return this;
     }
 
@@ -93,7 +106,7 @@ public class VarInteger implements Cloneable {
     }
 
     public VarInteger modulo(VarInteger to) {
-        this.setValue(this.getValue() % to.getValue());
+        this.value = this.value.mod(to.getBigIntegerValue());
         return this;
     }
 

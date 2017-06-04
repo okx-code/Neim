@@ -6,6 +6,7 @@ import me.okx.neim.token.types.Monad;
 import me.okx.neim.util.Util;
 import me.okx.neim.var.VarInteger;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,10 +15,11 @@ public class ToBase255 implements Monad<VarInteger> {
 
     @Override
     public NStack monad(VarInteger a) {
-        long v = a.getValue();
-        int digits = 0;
+        BigInteger v = a.getBigIntegerValue();
+        BigInteger _255 = BigInteger.valueOf(255);
+        int digits;
         for(int i = 0; ; i++) {
-            if(Math.pow(255, i) > v) {
+            if(_255.pow(i).compareTo(v) > 0) {
                 digits = i;
                 break;
             }
@@ -29,8 +31,8 @@ public class ToBase255 implements Monad<VarInteger> {
 
         digits--;
         for(int i = digits; i >= 0; i--) {
-            int times = (int) Math.floor(v/Math.pow(255,i));
-            v -= Math.pow(255, i) * times;
+            int times = v.divide(_255.pow(i)).intValue();
+            v = v.subtract(_255.pow(i).multiply(BigInteger.valueOf(times)));
             result.append(codepage.get(times));
         }
         return new NStackBuilder(result.toString()).build();
