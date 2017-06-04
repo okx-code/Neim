@@ -9,6 +9,10 @@ import me.okx.neim.var.VarInteger;
 public class Variable implements Nilad {
     private Object value;
 
+    public Object getValue() {
+        return value;
+    }
+
     public Variable(long value) {
         this.value = new VarInteger(value);
     }

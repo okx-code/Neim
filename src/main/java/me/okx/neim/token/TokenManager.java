@@ -157,12 +157,20 @@ public class TokenManager {
                 nums++;
             }
         }
+
+        for(Map.Entry<String, Token> entry : tokens.entrySet()) {
+            Token t = entry.getValue();
+            if(t instanceof Variable) {
+                System.out.println(entry.getKey() + ": " + ((Variable) t).getValue());
+            }
+        }
     }
 
     public boolean exists(String name) {
         return tokens.containsKey(name)
                 || twoToken.containsKey(name)
-                || special.containsKey(name);
+                || special.containsKey(name)
+                || name.matches(".*\\d+.*");
     }
 
     public void registerVariable(String name, Object value) {
