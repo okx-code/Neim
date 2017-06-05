@@ -1,8 +1,8 @@
 package me.okx.neim.token.tokens.special;
 
 import me.okx.neim.stack.NStack;
+import me.okx.neim.token.TokenManager;
 import me.okx.neim.token.types.Special;
-import me.okx.neim.token.types.SpecialData;
 import me.okx.neim.util.Util;
 import me.okx.neim.var.VarInteger;
 
@@ -12,12 +12,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Base255 implements Special {
-
     @Override
-    public NStack special(SpecialData data) {
-        NStack stack = data.getStack();
-        String value = data.getValue();
-
+    public NStack special(NStack stack, String value, TokenManager te) {
         value = new StringBuilder(value).reverse().toString();
 
         int pow = 0;

@@ -227,10 +227,9 @@ public class VarInteger implements Cloneable {
     }
 
     public VarInteger factorial() {
-        long result = 1;
         for(long i = 2; i <= this.getValue(); i++) {
-            result *= i;
+            this.multiply(new VarInteger(i));
         }
-        return new VarInteger(result);
+        return this;
     }
 }

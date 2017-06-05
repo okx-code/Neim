@@ -3,7 +3,7 @@ package me.okx.neim.token.tokens.manipulator;
 import me.okx.neim.stack.NStack;
 import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.TokenManager;
-import me.okx.neim.token.tokens.special.Manipulator;
+import me.okx.neim.token.types.Manipulator;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 

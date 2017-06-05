@@ -3,7 +3,6 @@ package me.okx.neim.token.tokens.special;
 import me.okx.neim.stack.NStack;
 import me.okx.neim.token.TokenManager;
 import me.okx.neim.token.types.Special;
-import me.okx.neim.token.types.SpecialData;
 import me.okx.neim.util.Util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
@@ -13,9 +12,7 @@ import java.util.function.Function;
 public class ForEach implements Special {
 
     @Override
-    public NStack special(SpecialData data) {
-        NStack stack = data.getStack();
-        String value = data.getValue();
+    public NStack special(NStack stack, String value, TokenManager _tm) {
         Object top = stack.pop();
         IntList a;
         if(top instanceof VarInteger) {
@@ -23,7 +20,7 @@ public class ForEach implements Special {
         } else {
             a = (IntList) top;
         }
-        TokenManager tm;
+        TokenManager tm = new TokenManager();
         IntList finished = new IntList();
         for(int i = 0; i < a.size(); i++) {
             VarInteger var = a.get(i);
@@ -36,6 +33,9 @@ public class ForEach implements Special {
             tm.handleTokens(value);
             finished.add((VarInteger) tm.getStack().pop());
         }
+
+        _tm.setFinished(tm.isFinished());
+
         stack.add(finished);
         return stack;
     }

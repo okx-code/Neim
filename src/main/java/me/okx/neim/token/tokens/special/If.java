@@ -3,16 +3,13 @@ package me.okx.neim.token.tokens.special;
 import me.okx.neim.stack.NStack;
 import me.okx.neim.token.TokenManager;
 import me.okx.neim.token.types.Special;
-import me.okx.neim.token.types.SpecialData;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
 public class If implements Special {
 
     @Override
-    public NStack special(SpecialData data) {
-        NStack stack = data.getStack();
-        String value = data.getValue();
+    public NStack special(NStack stack, String value, TokenManager _tm) {
         Object top = stack.pop();
         boolean a;
         if(top instanceof VarInteger) {
@@ -31,6 +28,9 @@ public class If implements Special {
         tm.handleTokens(value);
         stack.clear();
         stack.addAll(tm.getStack());
+
+        _tm.setFinished(tm.isFinished());
+
         return stack;
     }
 }

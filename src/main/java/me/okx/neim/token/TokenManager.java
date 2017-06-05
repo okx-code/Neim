@@ -5,6 +5,7 @@ import me.okx.neim.stack.NStack;
 import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.list.*;
+import me.okx.neim.token.tokens.manipulator.Terminate;
 import me.okx.neim.token.tokens.manipulator.WrapToArray;
 import me.okx.neim.token.tokens.monad.*;
 import me.okx.neim.token.tokens.nilad.*;
@@ -36,6 +37,7 @@ public class TokenManager {
     private NStack stack;
 
     private String sep = "";
+    private boolean finish = false;
 
     public TokenManager() {
         input = new InputUtil();
@@ -97,6 +99,9 @@ public class TokenManager {
         tokens.put("B", new ToBase255());
         tokens.put("D", new Duplicate());
         tokens.put("I", new Input(input));
+
+        manipulator.put("Q", new Terminate());
+
         tokens.put("R", new Random());
         tokens.put("S", new Swap());
         tokens.put("U", new DuplicateFromUnderneath());
@@ -162,7 +167,7 @@ public class TokenManager {
 
         tokens.put("α", new Variable(-1));
         String lowerGreek = "βγδεζηθικλμνξπρσςτυφχψω";
-        int nums = 10;
+        int nums = 0;
         for(int i = 0; i < lowerGreek.length(); i++) {
             tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(nums));
             nums++;
@@ -178,6 +183,14 @@ public class TokenManager {
 
     public void setSeparator(String sep) {
         this.sep = sep;
+    }
+
+    public void setFinished(boolean finish) {
+        this.finish = finish;
+    }
+
+    public boolean isFinished() {
+        return finish;
     }
 
     public String outputVars() {
@@ -208,6 +221,7 @@ public class TokenManager {
     }
 
     public void handleTokens(String program) {
+        finish = false;
         StringBuilder token = new StringBuilder();
         String integer = "";
         char[] chars = program.toCharArray();
@@ -263,6 +277,9 @@ public class TokenManager {
                      }
                  }
                  i = k;
+            }
+            if(finish) {
+                break;
             }
         }
         if(!integer.isEmpty()) {
@@ -416,7 +433,7 @@ public class TokenManager {
     }
 
     private void runSpecial(Special sp, String val) {
-        stack = sp.special(new SpecialData(val, stack));
+        stack = sp.special(stack, val, this);
     }
 
     public void outputStack() {

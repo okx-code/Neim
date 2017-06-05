@@ -3,7 +3,6 @@ package me.okx.neim.token.tokens.special;
 import me.okx.neim.stack.NStack;
 import me.okx.neim.token.TokenManager;
 import me.okx.neim.token.types.Special;
-import me.okx.neim.token.types.SpecialData;
 import me.okx.neim.util.Util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
@@ -16,14 +15,13 @@ public class Keep implements Special {
     }
 
     @Override
-    public NStack special(SpecialData data) {
-        NStack stack = data.getStack();
+    public NStack special(NStack stack, String value, TokenManager _tm) {
         Object top = stack.pop();
         if(top instanceof VarInteger) {
             top = Util.range(((VarInteger) top).getValue());
         }
         IntList list = (IntList) top;
-        TokenManager tm;
+        TokenManager tm = new TokenManager();
         for(int i = 0; i < list.size(); i++) {
             VarInteger var = list.get(i).clone();
             tm = new TokenManager();
@@ -32,7 +30,7 @@ public class Keep implements Special {
             tm.getInput().setInputs(stack.getInput().getInputs());
             tm.getStack().add(stack);
             tm.getStack().push(var);
-            tm.handleTokens(data.getValue());
+            tm.handleTokens(value);
             Object pop = tm.getStack().pop();
             if(pop instanceof VarInteger) {
                 VarInteger v = (VarInteger) pop;
@@ -45,6 +43,9 @@ public class Keep implements Special {
                 i--;
             }
         }
+
+        _tm.setFinished(tm.isFinished());
+
         stack.push(list);
         return stack;
     }

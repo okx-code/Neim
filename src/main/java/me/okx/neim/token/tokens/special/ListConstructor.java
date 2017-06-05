@@ -4,20 +4,19 @@ import me.okx.neim.stack.NStack;
 import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.TokenManager;
 import me.okx.neim.token.types.Special;
-import me.okx.neim.token.types.SpecialData;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
 public class ListConstructor implements Special {
 
     @Override
-    public NStack special(SpecialData data) {
-        String value = data.getValue();
-        NStack stack = data.getStack();
+    public NStack special(NStack stack, String value, TokenManager _tm) {
 
         TokenManager te = new TokenManager(stack.getInput());
         te.registerTokens(100);
         te.handleTokens(value);
+
+        _tm.setFinished(te.isFinished());
 
         NStack newStack = te.getStack();
 
