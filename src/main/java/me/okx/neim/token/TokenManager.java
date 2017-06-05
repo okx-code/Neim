@@ -91,6 +91,7 @@ public class TokenManager {
 
         special.put("(", new Base255());
 
+        tokens.put("_", new Dump());
         tokens.put(">", new Increment());
         tokens.put("<", new Decrement());
         tokens.put("B", new ToBase255());

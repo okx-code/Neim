@@ -1,5 +1,7 @@
 package me.okx.neim.stack;
 
+import java.util.Collection;
+
 public class NStackBuilder {
     private NStack stack;
 
@@ -21,8 +23,8 @@ public class NStackBuilder {
         return stack;
     }
 
-    public NStackBuilder addAll(NStack nstack) {
-        for(Object o : nstack) {
+    public NStackBuilder addAll(Collection n) {
+        for(Object o : n) {
             this.add(o);
         }
         return this;
