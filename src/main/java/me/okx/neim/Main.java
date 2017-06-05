@@ -16,6 +16,7 @@ public class Main {
         boolean input = false;
         boolean utf8 = true;
         boolean vars = false;
+        boolean newlineSeparated = false;
         if(args.length == 0) {
             System.out.print("Usage:\n" +
                     "    java -jar Neim-1.0-SNAPSHOT.jar -<FLAGS> <FILE>\n" +
@@ -35,6 +36,8 @@ public class Main {
                 utf8 = false;
             } if (flags.contains('v')) {
                 vars = true;
+            } if(flags.contains('n')) {
+                newlineSeparated = true;
             }
         }
 
@@ -69,10 +72,13 @@ public class Main {
         tm.registerTokens(100);
 
         if(!vars) {
+            if(newlineSeparated) {
+                tm.setSeparator("\n");
+            }
             tm.handleTokens(program);
             tm.outputStack();
         } else {
-            tm.outputVars();
+            System.out.println(tm.outputVars());
         }
     }
 }

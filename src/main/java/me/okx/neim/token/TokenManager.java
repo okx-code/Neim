@@ -35,6 +35,8 @@ public class TokenManager {
     @Getter
     private NStack stack;
 
+    private String sep = "";
+
     public TokenManager() {
         input = new InputUtil();
         manipulator = new HashMap<>();
@@ -173,7 +175,12 @@ public class TokenManager {
         }
     }
 
-    public void outputVars() {
+    public void setSeparator(String sep) {
+        this.sep = sep;
+    }
+
+    public String outputVars() {
+        StringBuilder vars = new StringBuilder();
         for(Map.Entry<String, Token> entry : tokens.entrySet()) {
             String name = entry.getKey();
             Token token = entry.getValue();
@@ -182,8 +189,9 @@ public class TokenManager {
                 continue;
             }
 
-            System.out.println(name + " : " + ((Variable) token).getValue());
+            vars.append(name).append(" : ").append(((Variable) token).getValue()).append("\n");
         }
+        return vars.toString();
     }
 
     public boolean exists(String name) {
@@ -418,7 +426,7 @@ public class TokenManager {
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < stack.size(); i++) {
             if(i != 0) {
-                sb.append("\n");
+                sb.append(sep);
             }
             sb.append(stack.get(i));
         }
