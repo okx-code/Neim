@@ -221,6 +221,11 @@ public class TokenManager {
     }
 
     public void handleTokens(String program) {
+        if(program.equalsIgnoreCase("easter egg")) {
+            o_O();
+            return;
+        }
+
         finish = false;
         StringBuilder token = new StringBuilder();
         String integer = "";
@@ -285,6 +290,21 @@ public class TokenManager {
         if(!integer.isEmpty()) {
             stack.push(new VarInteger(new BigInteger(integer)));
         }
+    }
+
+    private void o_O() {
+        stack.push("\t\t\t\t   .-^-.\n" +
+                "\t\t\t\t .'=^=^='.\n" +
+                "\t\t\t\t/=^=^=^=^=\\\n" +
+                "\t\t.-~-.  :^= HAPPY =^;\n" +
+                "\t  .'~~*~~'.|^ EASTER! ^|\n" +
+                "\t /~~*~~~*~~\\^=^=^=^=^=^:\n" +
+                "\t:~*~~~*~~~*~;\\.-*))`*-,/\n" +
+                "\t|~~~*~~~*~~|/*  ((*   *'.\n" +
+                "\t:~*~~~*~~~*|   *))  *   *\\\n" +
+                "\t \\~~*~~~*~~| *  ((*   *  /\n" +
+                "\t  `.~~*~~.' \\  *))  *  .'\n" +
+                "        `~~~`    '-.((*_.-'");
     }
 
     public void handleToken(String str) {
