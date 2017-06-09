@@ -100,6 +100,8 @@ public class TokenManager {
         tokens.put("D", new Duplicate());
         tokens.put("I", new Input(input));
 
+        special.put("N", new nTimesDo());
+
         manipulator.put("Q", new Terminate());
 
         tokens.put("R", new Random());
@@ -289,7 +291,7 @@ public class TokenManager {
         }
         if(!integer.isEmpty()) {
             stack.push(new VarInteger(new BigInteger(integer)));
-        }
+        };
     }
 
     private void o_O() {
