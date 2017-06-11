@@ -7,8 +7,6 @@ import me.okx.neim.util.Util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
-import java.util.function.Function;
-
 public class ForEach implements Special {
 
     @Override
@@ -31,20 +29,17 @@ public class ForEach implements Special {
             tm.getStack().push(var);
             tm.registerTokens(var.getValue(), i);
             tm.handleTokens(value);
+
             finished.add((VarInteger) tm.getStack().pop());
+
+            if(tm.finish) {
+                break;
+            }
         }
 
         _tm.setFinished(tm.isFinished());
 
         stack.add(finished);
         return stack;
-    }
-
-    public void f(Function<Integer, Integer> g) {
-        g.apply(3);
-    }
-
-    public void g() {
-        f(a->{int t=1;for(;a>0;a--)t*=a;return t;});
     }
 }

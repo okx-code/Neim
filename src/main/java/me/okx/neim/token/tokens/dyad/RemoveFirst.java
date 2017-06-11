@@ -10,6 +10,7 @@ public class RemoveFirst implements Dyad<Object, Object> {
 
     @Override
     public NStack dyad(Object a, Object b) {
+        NStackBuilder nstack = new NStackBuilder();
         IntList ret;
 
         if(b instanceof IntList) {
@@ -18,6 +19,8 @@ public class RemoveFirst implements Dyad<Object, Object> {
                 bl.remove(0);
             }
             ret = bl;
+
+            nstack.add(a);
         } else {
             IntList al = (IntList) a;
             VarInteger bl = (VarInteger) b;
@@ -32,6 +35,8 @@ public class RemoveFirst implements Dyad<Object, Object> {
             ret = al;
         }
 
-        return new NStackBuilder(ret).build();
+        nstack.add(ret);
+
+        return nstack.build();
     }
 }

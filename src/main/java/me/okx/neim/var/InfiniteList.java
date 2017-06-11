@@ -13,11 +13,7 @@ public class InfiniteList extends IntList {
 
     @Override
     public VarInteger get(int index) {
-        index += shift;
-        if(internalList.size() > index) {
-            return new VarInteger(internalList.get(index));
-        }
-        return infGet(index);
+        return infGet(index + shift);
     }
 
     public VarInteger infGet(int index) {
@@ -26,7 +22,8 @@ public class InfiniteList extends IntList {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("[");
+        return "[infinite list]";
+        /*StringBuilder sb = new StringBuilder("[");
         int i = 0;
         VarInteger get = get(i);
         while(true) {
@@ -40,7 +37,7 @@ public class InfiniteList extends IntList {
             }
         }
         sb.append("]");
-        return sb.toString();
+        return sb.toString();*/
     }
 
     @Override
@@ -66,7 +63,7 @@ public class InfiniteList extends IntList {
     public VarInteger remove(int index) {
         if(index == 0) {
             shift++;
-            return this.get(-1);
+            return null;
         }
         return null;
     }

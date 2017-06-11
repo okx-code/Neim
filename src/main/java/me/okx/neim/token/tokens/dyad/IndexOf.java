@@ -12,8 +12,9 @@ public class IndexOf extends VectorisableDyadIntList implements Dyad<VarInteger,
 
     @Override
     public NStack dyad(VarInteger a, IntList b) {
-        for(int i = 0; i < b.size() ; i++) {
+        for(int i = 0; i < b.size(); i++) {
             VarInteger v = b.get(i);
+
             if(b instanceof InfiniteList && v.getBigIntegerValue().compareTo(a.getBigIntegerValue()) > 0) {
                 return new NStackBuilder(new VarInteger(-1)).build();
             }
@@ -21,8 +22,6 @@ public class IndexOf extends VectorisableDyadIntList implements Dyad<VarInteger,
             if(a.equals(v)) {
                 return new NStackBuilder(new VarInteger(i)).build();
             }
-
-            i++;
         }
         return new NStackBuilder(new VarInteger(-1)).build();
     }

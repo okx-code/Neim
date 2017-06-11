@@ -8,7 +8,7 @@ public class Terminate implements Manipulator {
 
     @Override
     public NStack manipulator(NStack stack, TokenManager tm) {
-        tm.setFinished(true);
+        tm.finish = true;
         return stack;
     }
 }

@@ -37,7 +37,7 @@ public class TokenManager {
     private NStack stack;
 
     private String sep = "";
-    private boolean finish = false;
+    public boolean finish = false;
 
     public TokenManager() {
         input = new InputUtil();
@@ -57,11 +57,25 @@ public class TokenManager {
         stack = new NStack(input);
     }
 
+    private long thetaValue;
+    private long index;
+
+    public long getThetaValue() {
+        return thetaValue;
+    }
+
+    public long getIndex() {
+        return index;
+    }
+
     public void registerTokens(long thetaValue) {
         registerTokens(thetaValue, 256);
     }
 
     public void registerTokens(long thetaValue, long index) {
+        this.thetaValue = thetaValue;
+        this.index = index;
+
         tokens.put("₁", new InputLine(0, input));
         tokens.put("₂", new InputLine(1, input));
         tokens.put("₃", new InputLine(2, input));
@@ -107,6 +121,9 @@ public class TokenManager {
         tokens.put("R", new Random());
         tokens.put("S", new Swap());
         tokens.put("U", new DuplicateFromUnderneath());
+
+        tokens.put("\\", new Delete());
+        tokens.put("/", new DeleteFromUnderneath());
 
         tokens.put("c", new Perfect());
         tokens.put("f", new Fibonacci());
@@ -238,6 +255,7 @@ public class TokenManager {
             char c = chars[i];
             token.append(c);
             String str = token.toString();
+
             if(Util.isInteger(str)) {
                 integer = str;
             } else if(!integer.isEmpty()) {
@@ -267,6 +285,8 @@ public class TokenManager {
                         if(push < 0) {
                             break;
                         }
+                    } else if(at.equals("}")) {
+                        break;
                     }
                     token.append(chars[k]);
                 }
@@ -287,13 +307,15 @@ public class TokenManager {
                  }
                  i = k;
             }
+
             if(finish) {
                 break;
             }
+
         }
         if(!integer.isEmpty()) {
             stack.push(new VarInteger(new BigInteger(integer)));
-        };
+        }
     }
 
     private void o_O() {

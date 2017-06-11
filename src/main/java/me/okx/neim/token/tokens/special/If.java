@@ -24,12 +24,12 @@ public class If implements Special {
         tm.getInput().setInputStream(stack.getInput().getInputStream());
         tm.getInput().setInputs(stack.getInput().getInputs());
         tm.getStack().addAll(stack);
-        tm.registerTokens(100);
+        tm.registerTokens(_tm.getThetaValue(), _tm.getIndex());
         tm.handleTokens(value);
         stack.clear();
         stack.addAll(tm.getStack());
 
-        _tm.setFinished(tm.isFinished());
+        _tm.finish = tm.isFinished();
 
         return stack;
     }
