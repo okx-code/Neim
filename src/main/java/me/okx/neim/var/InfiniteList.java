@@ -4,6 +4,7 @@ import java.util.*;
 
 public class InfiniteList extends IntList {
     protected List<Long> internalList = new ArrayList<>();
+    protected int shift = 0;
 
     @Override
     public int size() {
@@ -12,9 +13,14 @@ public class InfiniteList extends IntList {
 
     @Override
     public VarInteger get(int index) {
+        index += shift;
         if(internalList.size() > index) {
             return new VarInteger(internalList.get(index));
         }
+        return infGet(index);
+    }
+
+    public VarInteger infGet(int index) {
         return null;
     }
 
@@ -54,5 +60,14 @@ public class InfiniteList extends IntList {
             }
             n++;
         }
+    }
+
+    @Override
+    public VarInteger remove(int index) {
+        if(index == 0) {
+            shift++;
+            return this.get(-1);
+        }
+        return null;
     }
 }

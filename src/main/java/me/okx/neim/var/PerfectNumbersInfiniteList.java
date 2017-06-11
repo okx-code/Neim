@@ -2,7 +2,7 @@ package me.okx.neim.var;
 
 public class PerfectNumbersInfiniteList extends InfiniteList {
     @Override
-    public VarInteger get(int index) {
+    public VarInteger infGet(int index) {
         return new VarInteger(nthPerfect(++index));
     }
 

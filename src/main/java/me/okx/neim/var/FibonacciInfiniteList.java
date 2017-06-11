@@ -2,7 +2,7 @@ package me.okx.neim.var;
 
 public class FibonacciInfiniteList extends InfiniteList {
     @Override
-    public VarInteger get(int index) {
+    public VarInteger infGet(int index) {
         VarInteger v = new VarInteger();
         if (internalList.size() > index) {
             v.setValue(internalList.get(index));

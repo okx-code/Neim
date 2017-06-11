@@ -57,7 +57,7 @@ public class VarInteger implements Cloneable {
             return false;
         }
 
-        return ((VarInteger) o).value == this.value;
+        return ((VarInteger) o).getBigIntegerValue().compareTo(this.getBigIntegerValue()) == 0;
     }
 
     @Override

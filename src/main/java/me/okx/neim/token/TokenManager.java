@@ -147,6 +147,7 @@ public class TokenManager {
         tokens.put("𝔻", new Add());
         tokens.put("𝔼", new Equal());
         tokens.put("𝔾", new GreaterThan());
+        tokens.put("𝕀", new IndexOf());
         tokens.put("𝕃", new LessThan());
         tokens.put("𝕄", new Modulo());
         tokens.put("𝕆", new Or());
