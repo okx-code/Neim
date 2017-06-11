@@ -5,6 +5,7 @@ import me.okx.neim.stack.NStack;
 import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.list.*;
+import me.okx.neim.token.tokens.manipulator.DeleteAllUnderneath;
 import me.okx.neim.token.tokens.manipulator.Terminate;
 import me.okx.neim.token.tokens.manipulator.WrapToArray;
 import me.okx.neim.token.tokens.monad.*;
@@ -107,6 +108,8 @@ public class TokenManager {
 
         special.put("(", new Base255());
 
+        tokens.put("/", new DeleteFromUnderneath());
+
         tokens.put("_", new Dump());
         tokens.put(">", new Increment());
         tokens.put("<", new Decrement());
@@ -123,7 +126,8 @@ public class TokenManager {
         tokens.put("U", new DuplicateFromUnderneath());
 
         tokens.put("\\", new Delete());
-        tokens.put("/", new DeleteFromUnderneath());
+
+        manipulator.put("^", new DeleteAllUnderneath());
 
         tokens.put("c", new Perfect());
         tokens.put("f", new Fibonacci());
