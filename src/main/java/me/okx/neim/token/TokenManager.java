@@ -32,6 +32,7 @@ public class TokenManager {
     private Map<String, Special> special;
     private Map<String, TwoToken> twoToken;
     private Map<String, Manipulator> manipulator;
+    private Map<String, String> replace;
     @Getter
     private InputUtil input;
     @Getter
@@ -46,6 +47,7 @@ public class TokenManager {
         tokens = new HashMap<>();
         special = new HashMap<>();
         twoToken = new HashMap<>();
+        replace = new HashMap<>();
         stack = new NStack(input);
     }
 
@@ -55,6 +57,7 @@ public class TokenManager {
         tokens = new HashMap<>();
         special = new HashMap<>();
         twoToken = new HashMap<>();
+        replace = new HashMap<>();
         stack = new NStack(input);
     }
 
@@ -81,16 +84,26 @@ public class TokenManager {
         tokens.put("₂", new InputLine(1, input));
         tokens.put("₃", new InputLine(2, input));
 
+        replace.put("ᚫ", " 2𝕋");
+        replace.put("ᚺ", " 2𝕍");
+
         special.put("Γ", new ForEach());
 
         tokens.put("\n", new Nothing());
 
         special.put("Δ", new InclusiveForEach());
 
+        replace.put("ᛄ", " 2𝕄");
+        replace.put("ᛖ", " 2𝔻");
+
         tokens.put("Θ", new Variable(thetaValue));
         tokens.put("Φ", new Variable(index));
 
+        replace.put("ᚠ", " 2𝕊");
+
         special.put("Λ", new Keep(1)); // keep values only equal to one
+
+        replace.put("ᛟ", "}𝕚");
 
         special.put("Ξ", new If());
 
@@ -206,6 +219,10 @@ public class TokenManager {
         }
     }
 
+    public void addReplacement(String id, String s) {
+        replace.put(id, s);
+    }
+
     public void setSeparator(String sep) {
         this.sep = sep;
     }
@@ -238,6 +255,7 @@ public class TokenManager {
                 || twoToken.containsKey(name)
                 || special.containsKey(name)
                 || manipulator.containsKey(name)
+                || replace.containsKey(name)
                 || name.matches(".*\\d+.*");
     }
 
@@ -255,6 +273,34 @@ public class TokenManager {
         StringBuilder token = new StringBuilder();
         String integer = "";
         char[] chars = program.toCharArray();
+        boolean[] rep = new boolean[chars.length];
+
+        StringBuilder sb = new StringBuilder();
+
+        boolean in = false;
+        for(int i = 0; i < chars.length; i++) {
+            if(chars[i] == '(') {
+                in = true;
+            } else if(chars[i] == ')') {
+                in = false;
+            }
+
+            if(!in) {
+                String s = String.valueOf(chars[i]);
+                for(Map.Entry<String, String> entry : replace.entrySet()) {
+                    if(s.contains(entry.getKey())) {
+                        s = s.replace(entry.getKey(), entry.getValue());
+                        break;
+                    }
+                }
+                sb.append(s);
+            } else {
+                sb.append(chars[i]);
+            }
+        }
+
+        chars = sb.toString().toCharArray();
+
         for(int i = 0; i < chars.length; i++) {
             char c = chars[i];
             token.append(c);
@@ -268,7 +314,9 @@ public class TokenManager {
                 token.setLength(0);
                 token.append(c);
             }
+
             str = token.toString();
+
             if (tokens.containsKey(str)) {
                 handleToken(str);
                 token.setLength(0);
@@ -300,7 +348,7 @@ public class TokenManager {
             } else if(twoToken.containsKey(str)) {
                  token.setLength(0);
                  int k = i+1;
-                 StringBuilder sb = new StringBuilder();
+                 sb = new StringBuilder();
                  for(; k < chars.length; k++) {
                      sb.append(chars[k]);
                      if(tokens.containsKey(sb.toString())) {
