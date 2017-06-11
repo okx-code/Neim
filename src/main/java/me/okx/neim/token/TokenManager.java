@@ -138,6 +138,7 @@ public class TokenManager {
         tokens.put("𝐦", new Smallest());
         tokens.put("𝐨", new Sort());
         tokens.put("𝐩", new Product());
+        tokens.put("𝐫", new ReverseToken());
         tokens.put("𝐬", new Sum());
         tokens.put("𝐮", new Uniquify());
 
@@ -359,6 +360,18 @@ public class TokenManager {
                 }
                 if(b instanceof IntList) {
                     b = ((IntList) b).join();
+                }
+                stack.push(a);
+                stack.push(b);
+            } else if(t instanceof VectorisableDyadIntInt) {
+                Object b = stack.pop();
+                Object a = stack.pop();
+
+                if(b instanceof VarInteger) {
+                    b = ((VarInteger) b).chars();
+                }
+                if(a instanceof VarInteger) {
+                    a = ((VarInteger) a).chars();
                 }
                 stack.push(a);
                 stack.push(b);
