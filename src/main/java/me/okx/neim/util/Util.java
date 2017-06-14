@@ -54,4 +54,24 @@ public class Util {
         }
         return list;
     }
+
+    public static VarInteger toVarInteger(Object a) {
+        VarInteger ret;
+        if(a instanceof IntList) {
+            ret = ((IntList) a).join();
+        } else {
+            ret = (VarInteger) a;
+        }
+        return ret;
+    }
+
+    public static IntList toIntList(Object a) {
+        IntList ret;
+        if(a instanceof VarInteger) {
+            ret = ((VarInteger) a).chars();
+        } else {
+            ret = (IntList) a;
+        }
+        return ret;
+    }
 }

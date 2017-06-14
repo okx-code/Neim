@@ -201,6 +201,7 @@ public class TokenManager {
         tokens.put("𝕙", new RemoveLast());
         tokens.put("𝕚", new Contains());
         tokens.put("𝕞", new MultipleOf());
+        tokens.put("𝕟", new Concatenate());
         tokens.put("𝕣", new ReverseRepeat());
 
         tokens.put("α", new Variable(-1));
