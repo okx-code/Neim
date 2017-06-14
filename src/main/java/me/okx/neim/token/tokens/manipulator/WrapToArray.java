@@ -12,13 +12,14 @@ public class WrapToArray implements Manipulator {
     @Override
     public NStack manipulator(NStack stack, TokenManager tm) {
         IntList l = new IntList();
-        for(Object o : stack) {
+        while(stack.size() > 0) {
+            Object o = stack.pop();
             if(o instanceof IntList) {
                 l.addAll((IntList) o);
             } else if(o instanceof VarInteger) {
                 l.add((VarInteger) o);
             }
         }
-        return new NStackBuilder(l).build();
+        return new NStackBuilder().addAll(stack).add(l).build();
     }
 }

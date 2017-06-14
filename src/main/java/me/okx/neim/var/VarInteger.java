@@ -70,12 +70,12 @@ public class VarInteger implements Cloneable {
         IntList factors = new IntList();
         for (int i = 2; i <= n / i; i++) {
             while (n % i == 0) {
-                factors.addInt(i);
+                factors.add(new VarInteger(i));
                 n /= i;
             }
         }
         if (n > 1) {
-            factors.addInt(n);
+            factors.add(new VarInteger(n));
         }
         return factors;
     }
@@ -227,9 +227,16 @@ public class VarInteger implements Cloneable {
     }
 
     public VarInteger factorial() {
-        for(long i = 2; i <= this.getValue(); i++) {
-            this.multiply(new VarInteger(i));
+        BigInteger result = BigInteger.ONE;
+        BigInteger n = value;
+
+        while (!n.equals(BigInteger.ZERO)) {
+            result = result.multiply(n);
+            n = n.subtract(BigInteger.ONE);
         }
+
+        value = result;
+
         return this;
     }
 }

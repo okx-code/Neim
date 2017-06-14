@@ -1,6 +1,7 @@
 package me.okx.neim.stack;
 
 import lombok.Getter;
+import lombok.Setter;
 import me.okx.neim.util.InputUtil;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
@@ -8,6 +9,7 @@ import me.okx.neim.var.VarInteger;
 import java.util.Stack;
 
 public class NStack extends Stack {
+    @Setter
     @Getter
     private InputUtil input;
 

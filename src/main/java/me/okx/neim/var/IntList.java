@@ -1,5 +1,6 @@
 package me.okx.neim.var;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -31,7 +32,7 @@ public class IntList extends ArrayList<VarInteger> {
         return super.get(index).clone();
     }
 
-    public void addInt(long n) {
+    public void addInt(BigInteger n) {
         this.add(new VarInteger(n));
     }
 

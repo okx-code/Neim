@@ -322,7 +322,11 @@ public class TokenManager {
                 token.setLength(0);
             } else if(manipulator.containsKey(str)) {
                 token.setLength(0);
-                stack = manipulator.get(str).manipulator(stack, this);
+                NStack ns = manipulator.get(str).manipulator(stack, this);
+                stack.clear();
+                for(Object o : ns) {
+                    stack.push(o);
+                }
             } else if(special.containsKey(str)) {
                 token.setLength(0);
                 int k = i+1;
@@ -474,6 +478,7 @@ public class TokenManager {
             IntList ret = new IntList();
             for(VarInteger val : list) {
                 ret.addAll(m.monad(val));
+                System.out.println(ret);
             }
             return new NStackBuilder(ret).build();
         } else {
@@ -502,7 +507,7 @@ public class TokenManager {
                 VarInteger bInt = bList.get(i);
                 VarInteger aInt = aList.get(i);
                 for(Object elem : d.dyad(aInt, bInt)) {
-                    list.addInt(((VarInteger) elem).getValue());
+                    list.add(((VarInteger) elem));
                 }
             }
             return new NStackBuilder(list).build();
@@ -543,7 +548,11 @@ public class TokenManager {
     }
 
     private void runSpecial(Special sp, String val) {
-        stack = sp.special(stack, val, this);
+        NStack ns = sp.special(stack, val, this);
+        stack.clear();
+        for(Object o : ns) {
+            stack.push(o);
+        }
     }
 
     public void outputStack() {
