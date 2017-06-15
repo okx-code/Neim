@@ -170,6 +170,7 @@ public class TokenManager {
         tokens.put("𝐣", new Join());
         tokens.put("𝐥", new Length());
         tokens.put("𝐦", new Smallest());
+        tokens.put("𝐧", new LengthRange());
         tokens.put("𝐨", new Sort());
         tokens.put("𝐩", new Product());
         tokens.put("𝐫", new ReverseToken());
