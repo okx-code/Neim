@@ -550,10 +550,7 @@ public class TokenManager {
 
     private void runSpecial(Special sp, String val) {
         NStack ns = sp.special(stack, val, this);
-        stack.clear();
-        for(Object o : ns) {
-            stack.push(o);
-        }
+        stack = ns;
     }
 
     public void outputStack() {

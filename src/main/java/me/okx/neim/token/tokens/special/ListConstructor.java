@@ -1,7 +1,6 @@
 package me.okx.neim.token.tokens.special;
 
 import me.okx.neim.stack.NStack;
-import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.TokenManager;
 import me.okx.neim.token.types.Special;
 import me.okx.neim.var.IntList;
@@ -30,6 +29,8 @@ public class ListConstructor implements Special {
             }
         }
 
-        return new NStackBuilder().addAll(stack).add(l).build();
+        stack.push(l);
+
+        return stack;
     }
 }
