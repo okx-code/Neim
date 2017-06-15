@@ -3,10 +3,10 @@ package me.okx.neim.token.tokens.dyad;
 import me.okx.neim.stack.NStack;
 import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.types.Dyad;
-import me.okx.neim.token.types.vectorisable.Vectorisable;
+import me.okx.neim.token.types.vectorisable.VectorisableDyadIntInt;
 import me.okx.neim.var.VarInteger;
 
-public class Modulo extends Vectorisable implements Dyad<VarInteger, VarInteger> {
+public class Modulo extends VectorisableDyadIntInt implements Dyad<VarInteger, VarInteger> {
 
     @Override
     public NStack dyad(VarInteger a, VarInteger b) {
