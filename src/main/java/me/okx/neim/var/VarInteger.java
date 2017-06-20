@@ -91,7 +91,7 @@ public class VarInteger implements Cloneable {
     }
 
     public VarInteger clone() {
-        return new VarInteger(this.getValue());
+        return new VarInteger(this.getBigIntegerValue());
     }
 
     public VarInteger coprime(VarInteger to) {

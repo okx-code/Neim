@@ -194,6 +194,7 @@ public class TokenManager {
         tokens.put("𝕎", new Power());
         tokens.put("𝕏", new XRange());
         tokens.put("𝕒", new And());
+        tokens.put("𝕓", new Bifurcate());
         tokens.put("𝕔", new ClosestTo());
         tokens.put("𝕕", new NthElement());
         tokens.put("𝕖", new SelectFirst());
