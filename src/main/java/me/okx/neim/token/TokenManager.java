@@ -185,6 +185,7 @@ public class TokenManager {
         tokens.put("𝐒", new CreateSingletonList());
         tokens.put("𝐓", new Factorial());
         tokens.put("𝐔", new UniquePrimeFactors());
+        tokens.put("𝐕", new ProperDivisors());
 
         tokens.put("𝐝", new Deltas());
         tokens.put("𝐠", new Largest());
