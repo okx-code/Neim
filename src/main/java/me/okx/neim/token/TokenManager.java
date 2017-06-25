@@ -5,9 +5,7 @@ import me.okx.neim.stack.NStack;
 import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.tokens.dyad.*;
 import me.okx.neim.token.tokens.list.*;
-import me.okx.neim.token.tokens.manipulator.DeleteAllUnderneath;
-import me.okx.neim.token.tokens.manipulator.Terminate;
-import me.okx.neim.token.tokens.manipulator.WrapToArray;
+import me.okx.neim.token.tokens.manipulator.*;
 import me.okx.neim.token.tokens.monad.*;
 import me.okx.neim.token.tokens.nilad.*;
 import me.okx.neim.token.tokens.special.*;
@@ -37,6 +35,9 @@ public class TokenManager {
     private InputUtil input;
     @Getter
     private NStack stack;
+    private String code;
+
+    private Map<Long, Object> recurValues = new HashMap<>();
 
     private String sep = "";
     public boolean finish = false;
@@ -70,6 +71,22 @@ public class TokenManager {
 
     public long getIndex() {
         return index;
+    }
+
+    public void setRecurValue(long key, Object value) {
+        recurValues.put(key, value);
+    }
+
+    public Object getRecurValue(long key) {
+        return recurValues.get(key);
+    }
+
+    public void setRecurValues(Map<Long, Object> recurValues) {
+        this.recurValues = recurValues;
+    }
+
+    public Map<Long, Object> getRecurValues() {
+        return recurValues;
     }
 
     public void registerTokens(long thetaValue) {
@@ -130,6 +147,9 @@ public class TokenManager {
         tokens.put("D", new Duplicate());
         tokens.put("I", new Input(input));
 
+        manipulator.put("K", new Recur());
+        manipulator.put("L", new SetFirstTwoRecurValues());
+
         special.put("N", new nTimesDo());
 
         manipulator.put("Q", new Terminate());
@@ -151,6 +171,7 @@ public class TokenManager {
         tokens.put("𝐀", new Absolute());
         tokens.put("𝐁", new Substrings());
         tokens.put("𝐂", new Chars());
+        tokens.put("𝐃", new LargestDivisorUnder());
         tokens.put("𝐄", new IsPalindrome());
         tokens.put("𝐅", new Factors());
         tokens.put("𝐈", new IRange());
@@ -199,8 +220,10 @@ public class TokenManager {
         tokens.put("𝕕", new NthElement());
         tokens.put("𝕖", new SelectFirst());
         tokens.put("𝕗", new SelectLast());
-        tokens.put("𝕘", new RemoveFirst());
-        tokens.put("𝕙", new RemoveLast());
+
+        manipulator.put("𝕘", new RemoveFirst());
+        manipulator.put("𝕙", new RemoveLast());
+
         tokens.put("𝕚", new Contains());
         tokens.put("𝕞", new MultipleOf());
         tokens.put("𝕟", new Concatenate());
@@ -222,8 +245,8 @@ public class TokenManager {
         }
     }
 
-    public void addReplacement(String id, String s) {
-        replace.put(id, s);
+    public String getCode() {
+        return code;
     }
 
     public void setSeparator(String sep) {
@@ -267,6 +290,7 @@ public class TokenManager {
     }
 
     public void handleTokens(String program) {
+        code = program;
         if(program.equalsIgnoreCase("easter egg")) {
             o_O();
             return;
@@ -276,7 +300,6 @@ public class TokenManager {
         StringBuilder token = new StringBuilder();
         String integer = "";
         char[] chars = program.toCharArray();
-        boolean[] rep = new boolean[chars.length];
 
         StringBuilder sb = new StringBuilder();
 
@@ -326,10 +349,11 @@ public class TokenManager {
             } else if(manipulator.containsKey(str)) {
                 token.setLength(0);
                 NStack ns = manipulator.get(str).manipulator(stack, this);
-                stack.clear();
+                NStack newStack = new NStack(input);
                 for(Object o : ns) {
-                    stack.push(o);
+                    newStack.push(o);
                 }
+                stack = newStack;
             } else if(special.containsKey(str)) {
                 token.setLength(0);
                 int k = i+1;
@@ -344,7 +368,7 @@ public class TokenManager {
                         if(push < 0) {
                             break;
                         }
-                    } else if(at.equals("}")) {
+                    } else if(at.equals("}") && !(special.get(str) instanceof Base255)) {
                         break;
                     }
                     token.append(chars[k]);
@@ -481,7 +505,6 @@ public class TokenManager {
             IntList ret = new IntList();
             for(VarInteger val : list) {
                 ret.addAll(m.monad(val));
-                System.out.println(ret);
             }
             return new NStackBuilder(ret).build();
         } else {
