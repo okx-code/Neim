@@ -33,7 +33,7 @@ public class InputUtil {
     }
 
     public IntList getList(String ss) {
-        ss = ss.substring(1, ss.length());
+        ss = ss.substring(1, ss.length()-1);
         IntList list = new IntList();
         for(String s : ss.split(" ")) {
             list.add(new VarInteger(s));
