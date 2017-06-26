@@ -198,6 +198,7 @@ public class TokenManager {
         tokens.put("𝐩", new Product());
         tokens.put("𝐫", new ReverseToken());
         tokens.put("𝐬", new Sum());
+        tokens.put("𝐭", new IsComposite());
         tokens.put("𝐮", new Uniquify());
 
         tokens.put("𝔸", new Append());
