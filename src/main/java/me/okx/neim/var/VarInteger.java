@@ -124,7 +124,7 @@ public class VarInteger implements Cloneable {
         return true;
     }
 
-    public IntList getFactors() {
+    public IntList getDivisors() {
         long a = this.getValue();
         long upperlimit = (long)(Math.sqrt(a));
         ArrayList<Long> factors = new ArrayList<>();

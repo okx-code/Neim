@@ -10,7 +10,7 @@ public class ProperDivisors implements Monad<VarInteger> {
 
     @Override
     public NStack monad(VarInteger a) {
-        IntList divisors = a.getFactors();
+        IntList divisors = a.getDivisors();
         if(divisors.size() > 0) {
             divisors.remove(divisors.size() - 1);
         }

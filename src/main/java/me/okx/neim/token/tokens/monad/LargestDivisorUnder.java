@@ -11,7 +11,7 @@ public class LargestDivisorUnder extends Vectorisable implements Monad<VarIntege
 
     @Override
     public NStack monad(VarInteger a) {
-        IntList factors = a.getFactors();
+        IntList factors = a.getDivisors();
         VarInteger ret;
         if(factors.size() > 1) {
             factors.remove(factors.size() - 1);

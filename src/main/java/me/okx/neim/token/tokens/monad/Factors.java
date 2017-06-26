@@ -10,6 +10,6 @@ public class Factors extends Vectorisable implements Monad<VarInteger> {
 
     @Override
     public NStack monad(VarInteger a) {
-        return new NStackBuilder(a.getFactors()).build();
+        return new NStackBuilder(a.getDivisors()).build();
     }
 }

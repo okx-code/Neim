@@ -187,6 +187,7 @@ public class TokenManager {
         tokens.put("𝐔", new UniquePrimeFactors());
         tokens.put("𝐕", new ProperDivisors());
 
+        tokens.put("𝐜", new DivisorCount());
         tokens.put("𝐝", new Deltas());
         tokens.put("𝐠", new Largest());
         tokens.put("𝐣", new Join());
@@ -237,7 +238,6 @@ public class TokenManager {
             tokens.put(String.valueOf(lowerGreek.charAt(i)), new Variable(nums));
             nums++;
         }
-
         for(String s : Util.getCodepage()) {
             if(!exists(s)) {
                 tokens.put(s, new Variable(nums));
