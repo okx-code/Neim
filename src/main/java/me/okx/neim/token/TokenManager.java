@@ -99,6 +99,8 @@ public class TokenManager {
 
         special.put("Ξ", new If());
 
+        replace.put("ᛦ", " 2𝕎");
+
         twoToken.put("Π", new Assign());
 
         special.put("Σ", new Keep(0)); // keep values only equal to zero
