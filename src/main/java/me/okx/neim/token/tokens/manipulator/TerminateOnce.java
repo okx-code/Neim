@@ -4,16 +4,11 @@ import me.okx.neim.stack.NStack;
 import me.okx.neim.token.TokenManager;
 import me.okx.neim.token.types.Manipulator;
 
-public class SetFirstTwoRecurValues implements Manipulator {
+public class TerminateOnce implements Manipulator {
 
     @Override
     public NStack manipulator(NStack stack, TokenManager tm) {
-        Object one = stack.pop();
-        Object zero = stack.pop();
-
-        tm.setRecurValue(1, one);
-        tm.setRecurValue(0, zero);
-
+        tm.finishSilent = true;
         return stack;
     }
 }

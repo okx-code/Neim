@@ -37,10 +37,9 @@ public class TokenManager {
     private NStack stack;
     private String code;
 
-    private Map<Long, Object> recurValues = new HashMap<>();
-
     private String sep = "";
     public boolean finish = false;
+    public boolean finishSilent = false;
 
     public TokenManager() {
         input = new InputUtil();
@@ -71,22 +70,6 @@ public class TokenManager {
 
     public long getIndex() {
         return index;
-    }
-
-    public void setRecurValue(long key, Object value) {
-        recurValues.put(key, value);
-    }
-
-    public Object getRecurValue(long key) {
-        return recurValues.get(key);
-    }
-
-    public void setRecurValues(Map<Long, Object> recurValues) {
-        this.recurValues = recurValues;
-    }
-
-    public Map<Long, Object> getRecurValues() {
-        return recurValues;
     }
 
     public void registerTokens(long thetaValue) {
@@ -132,9 +115,10 @@ public class TokenManager {
 
         tokens.put(" ", new Nothing());
 
-        special.put("&", new ListConstructor());
-
+        manipulator.put("#", new TerminateOnce());
         manipulator.put("$", new WrapToArray());
+
+        special.put("&", new ListConstructor());
 
         special.put("(", new Base255());
 
@@ -148,7 +132,6 @@ public class TokenManager {
         tokens.put("I", new Input(input));
 
         manipulator.put("K", new Recur());
-        manipulator.put("L", new SetFirstTwoRecurValues());
 
         special.put("N", new nTimesDo());
 
@@ -393,7 +376,7 @@ public class TokenManager {
                  i = k;
             }
 
-            if(finish) {
+            if(finish || finishSilent) {
                 break;
             }
 

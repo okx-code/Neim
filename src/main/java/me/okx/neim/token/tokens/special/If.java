@@ -7,7 +7,6 @@ import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
 public class If implements Special {
-
     @Override
     public NStack special(NStack stack, String value, TokenManager _tm) {
         Object top = stack.pop();
@@ -17,15 +16,22 @@ public class If implements Special {
         } else {
             a = ((IntList) top).contains(new VarInteger(1));
         }
+        String program;
         if(!a) {
-            return stack;
+            if(value.contains("#")) {
+                program = value.split("\\#", 2)[1];
+            } else {
+                return stack;
+            }
+        } else {
+            program = value;
         }
         TokenManager tm = new TokenManager();
         tm.getInput().setInputStream(stack.getInput().getInputStream());
         tm.getInput().setInputs(stack.getInput().getInputs());
         tm.getStack().addAll(stack);
         tm.registerTokens(_tm.getThetaValue(), _tm.getIndex());
-        tm.handleTokens(value);
+        tm.handleTokens(program);
         stack.clear();
         stack.addAll(tm.getStack());
 

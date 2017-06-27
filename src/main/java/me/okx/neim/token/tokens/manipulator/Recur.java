@@ -14,12 +14,6 @@ public class Recur implements Manipulator {
 
         VarInteger top = stack.popInt();
 
-
-        if(tm.getRecurValues().containsKey(top.getValue())) {
-            stack.push(tm.getRecurValue(top.getValue()));
-            return stack;
-        }
-
         te.getStack().push(top);
 
         te.handleTokens(tm.getCode());
