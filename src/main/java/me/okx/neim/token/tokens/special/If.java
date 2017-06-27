@@ -24,11 +24,9 @@ public class If implements Special {
                 return stack;
             }
         } else {
-            program = value;
+            program = value.split("\\#")[0];
         }
-        TokenManager tm = new TokenManager();
-        tm.getInput().setInputStream(stack.getInput().getInputStream());
-        tm.getInput().setInputs(stack.getInput().getInputs());
+        TokenManager tm = new TokenManager(stack.getInput());
         tm.getStack().addAll(stack);
         tm.registerTokens(_tm.getThetaValue(), _tm.getIndex());
         tm.handleTokens(program);

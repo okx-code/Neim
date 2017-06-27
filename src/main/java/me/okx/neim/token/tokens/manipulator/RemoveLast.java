@@ -1,7 +1,6 @@
 package me.okx.neim.token.tokens.manipulator;
 
 import me.okx.neim.stack.NStack;
-import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.TokenManager;
 import me.okx.neim.token.types.Manipulator;
 import me.okx.neim.var.IntList;
@@ -21,15 +20,16 @@ public class RemoveLast implements Manipulator {
                 la.remove(la.size() - 1);
             }
 
-            return new NStackBuilder(la).build();
+            stack.push(la);
         } else {
             IntList lb = (IntList) b;
 
             if(lb.size() > 0) {
                 lb.remove(lb.size() - 1);
             }
-
-            return new NStackBuilder(lb).build();
+            stack.push(lb);
         }
+
+        return stack;
     }
 }

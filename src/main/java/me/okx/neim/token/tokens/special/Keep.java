@@ -24,10 +24,8 @@ public class Keep implements Special {
         TokenManager tm = new TokenManager();
         for(int i = 0; i < list.size(); i++) {
             VarInteger var = list.get(i).clone();
-            tm = new TokenManager();
+            tm = new TokenManager(_tm.getInput());
             tm.registerTokens(var.getValue(), i);
-            tm.getInput().setInputStream(stack.getInput().getInputStream());
-            tm.getInput().setInputs(stack.getInput().getInputs());
             tm.getStack().add(stack);
             tm.getStack().push(var);
             tm.handleTokens(value);

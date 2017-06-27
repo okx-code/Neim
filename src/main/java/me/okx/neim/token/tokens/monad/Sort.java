@@ -15,15 +15,16 @@ public class Sort implements Monad<Object> {
 
     @Override
     public NStack monad(Object a) {
-        Object finished;
+        Object finished = null;
         if(a instanceof IntList) {
+            System.out.println("sorting " + a);
             List<Long> vals = new ArrayList<>();
             for (VarInteger val : (IntList) a) {
                 vals.add(val.getValue());
             }
             Collections.sort(vals);
             finished = new IntList(vals);
-        } else {
+        } else if(a instanceof VarInteger) {
             char[] chars = a.toString().toCharArray();
             Arrays.sort(chars);
             finished = new VarInteger(new String(chars));

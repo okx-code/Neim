@@ -26,11 +26,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TokenManager {
-    private Map<String, Token> tokens;
-    private Map<String, Special> special;
-    private Map<String, TwoToken> twoToken;
-    private Map<String, Manipulator> manipulator;
-    private Map<String, String> replace;
+    private Map<String, Token> tokens = new HashMap<>();
+    private Map<String, Special> special = new HashMap<>();
+    private Map<String, TwoToken> twoToken = new HashMap<>();
+    private Map<String, Manipulator> manipulator = new HashMap<>();
+    private Map<String, String> replace = new HashMap<>();
     @Getter
     private InputUtil input;
     @Getter
@@ -43,21 +43,11 @@ public class TokenManager {
 
     public TokenManager() {
         input = new InputUtil();
-        manipulator = new HashMap<>();
-        tokens = new HashMap<>();
-        special = new HashMap<>();
-        twoToken = new HashMap<>();
-        replace = new HashMap<>();
         stack = new NStack(input);
     }
 
     public TokenManager(InputUtil input) {
         this.input = input;
-        manipulator = new HashMap<>();
-        tokens = new HashMap<>();
-        special = new HashMap<>();
-        twoToken = new HashMap<>();
-        replace = new HashMap<>();
         stack = new NStack(input);
     }
 
@@ -80,9 +70,11 @@ public class TokenManager {
         this.thetaValue = thetaValue;
         this.index = index;
 
-        tokens.put("₁", new InputLine(0, input));
-        tokens.put("₂", new InputLine(1, input));
-        tokens.put("₃", new InputLine(2, input));
+        special.put("ͻ", new InfiniteLoop());
+
+        manipulator.put("₁", new InputLine(0));
+        manipulator.put("₂", new InputLine(1));
+        manipulator.put("₃", new InputLine(2));
 
         replace.put("ᚫ", " 2𝕋");
         replace.put("ᚺ", " 2𝕍");
@@ -115,6 +107,7 @@ public class TokenManager {
 
         tokens.put(" ", new Nothing());
 
+        manipulator.put("÷", new IfTrueTerminateOnce());
         manipulator.put("#", new TerminateOnce());
         manipulator.put("$", new WrapToArray());
 
@@ -169,6 +162,7 @@ public class TokenManager {
         tokens.put("𝐓", new Factorial());
         tokens.put("𝐔", new UniquePrimeFactors());
         tokens.put("𝐕", new ProperDivisors());
+        tokens.put("𝐗", new Prefixes());
 
         tokens.put("𝐜", new DivisorCount());
         tokens.put("𝐝", new Deltas());
@@ -183,6 +177,7 @@ public class TokenManager {
         tokens.put("𝐬", new Sum());
         tokens.put("𝐭", new IsComposite());
         tokens.put("𝐮", new Uniquify());
+        tokens.put("𝐱", new Suffixes());
 
         tokens.put("𝔸", new Append());
         tokens.put("ℂ", new Coprime());
@@ -230,10 +225,6 @@ public class TokenManager {
         }
     }
 
-    public String getCode() {
-        return code;
-    }
-
     public void setSeparator(String sep) {
         this.sep = sep;
     }
@@ -276,6 +267,7 @@ public class TokenManager {
 
     public void handleTokens(String program) {
         code = program;
+
         if(program.equalsIgnoreCase("easter egg")) {
             o_O();
             return;

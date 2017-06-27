@@ -1,21 +1,19 @@
 package me.okx.neim.token.tokens.nilad;
 
 import me.okx.neim.stack.NStack;
-import me.okx.neim.stack.NStackBuilder;
-import me.okx.neim.token.types.Nilad;
-import me.okx.neim.util.InputUtil;
+import me.okx.neim.token.TokenManager;
+import me.okx.neim.token.types.Manipulator;
 
-public class InputLine implements Nilad {
+public class InputLine implements Manipulator {
     private int line;
-    private InputUtil input;
 
-    public InputLine(int line, InputUtil input) {
+    public InputLine(int line) {
         this.line = line;
-        this.input = input;
     }
 
     @Override
-    public NStack nilad() {
-        return new NStackBuilder(input.getSomething(line)).build();
+    public NStack manipulator(NStack stack, TokenManager tm) {
+        stack.push(tm.getInput().getSomething(line));
+        return stack;
     }
 }

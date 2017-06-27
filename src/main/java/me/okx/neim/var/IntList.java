@@ -11,7 +11,11 @@ public class IntList extends ArrayList<VarInteger> {
 
     public IntList(Iterable i) {
         for(Object a : i) {
-            this.add((VarInteger) a);
+            if(a instanceof Long) {
+                this.add(new VarInteger((long) a));
+            } else {
+                this.add((VarInteger) a);
+            }
         }
     }
 

@@ -36,7 +36,7 @@ public class VarInteger implements Cloneable {
 
     public VarInteger(String str) {
         if(Util.isInteger(str)) {
-            setValue(Long.parseLong(str));
+            this.value = new BigInteger(str);
         } else {
             setValue(Util.sumString(str));
         }
