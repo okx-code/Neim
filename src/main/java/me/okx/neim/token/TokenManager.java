@@ -8,7 +8,9 @@ import me.okx.neim.token.tokens.list.*;
 import me.okx.neim.token.tokens.manipulator.*;
 import me.okx.neim.token.tokens.monad.*;
 import me.okx.neim.token.tokens.nilad.*;
+import me.okx.neim.token.tokens.nilad.Random;
 import me.okx.neim.token.tokens.special.*;
+import me.okx.neim.token.tokens.twochar.ThreeDigitNumber;
 import me.okx.neim.token.tokens.twotoken.Assign;
 import me.okx.neim.token.tokens.twotoken.ShortForEach;
 import me.okx.neim.token.types.*;
@@ -22,8 +24,7 @@ import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TokenManager {
     private Map<String, Token> tokens = new HashMap<>();
@@ -31,6 +32,7 @@ public class TokenManager {
     private Map<String, TwoToken> twoToken = new HashMap<>();
     private Map<String, Manipulator> manipulator = new HashMap<>();
     private Map<String, String> replace = new HashMap<>();
+    private Map<String, TwoChar> twoChar = new HashMap<>();
     @Getter
     private InputUtil input;
     @Getter
@@ -122,6 +124,12 @@ public class TokenManager {
         tokens.put("_", new Dump());
         tokens.put(">", new Increment());
         tokens.put("<", new Decrement());
+
+        twoChar.put("'", new ThreeDigitNumber(100));
+        twoChar.put("\"", new ThreeDigitNumber(356));
+        twoChar.put("+", new ThreeDigitNumber(612));
+        twoChar.put("*", new ThreeDigitNumber(868));
+
         tokens.put("B", new ToBase255());
         tokens.put("D", new Duplicate());
         tokens.put("I", new Input(input));
@@ -261,6 +269,7 @@ public class TokenManager {
                 || special.containsKey(name)
                 || manipulator.containsKey(name)
                 || replace.containsKey(name)
+                || twoChar.containsKey(name)
                 || name.matches(".*\\d+.*");
     }
 
@@ -369,6 +378,18 @@ public class TokenManager {
                      }
                  }
                  i = k;
+            } else if(twoChar.containsKey(str)) {
+                StringBuilder theChar = new StringBuilder();
+                List<String> codePage = Arrays.asList(Util.getCodepage());
+
+                do {
+                    i++;
+                    theChar.append(chars[i]);
+                } while((!codePage.contains(theChar.toString())));
+
+                stack = twoChar.get(str).twoChar(stack, theChar.toString(), this);
+
+                token.setLength(0);
             }
 
             if(finish || finishSilent) {
