@@ -17,7 +17,6 @@ public class Sort implements Monad<Object> {
     public NStack monad(Object a) {
         Object finished = null;
         if(a instanceof IntList) {
-            System.out.println("sorting " + a);
             List<Long> vals = new ArrayList<>();
             for (VarInteger val : (IntList) a) {
                 vals.add(val.getValue());
