@@ -174,6 +174,7 @@ public class TokenManager {
         tokens.put("𝐕", new ProperDivisors());
         tokens.put("𝐗", new Prefixes());
 
+        tokens.put("𝐚", new Transpose());
         tokens.put("𝐜", new DivisorCount());
         tokens.put("𝐝", new Deltas());
         tokens.put("𝐠", new Largest());
