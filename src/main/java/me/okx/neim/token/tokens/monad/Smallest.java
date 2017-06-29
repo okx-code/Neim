@@ -9,6 +9,6 @@ public class Smallest implements Monad<IntList> {
 
     @Override
     public NStack monad(IntList a) {
-        return new NStackBuilder(a.getClosestTo(Long.MIN_VALUE)).build();
+        return new NStackBuilder(a.getClosestTo(0)).build();
     }
 }
