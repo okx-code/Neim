@@ -11,7 +11,6 @@ public class Modulo extends VectorisableDyadIntInt implements Dyad<VarInteger, V
     @Override
     public NStack dyad(VarInteger a, VarInteger b) {
         VarInteger val = a.modulo(b);
-        System.out.println(val);
         return new NStackBuilder(val).build();
     }
 }
