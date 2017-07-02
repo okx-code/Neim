@@ -326,7 +326,7 @@ public class TokenManager {
         if(program.contains("-")) {
             String[] sides = program.split("-", 2);
 
-            handleTokens(sides[0]);
+            handleTokens(sides[0], debug);
 
             Object pop = stack.pop();
             if(pop.equals(new VarInteger(0)) ||
