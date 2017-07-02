@@ -106,6 +106,7 @@ public class VarInteger implements Cloneable {
     }
 
     public VarInteger modulo(VarInteger to) {
+
         this.value = this.value.mod(to.getBigIntegerValue());
         return this;
     }

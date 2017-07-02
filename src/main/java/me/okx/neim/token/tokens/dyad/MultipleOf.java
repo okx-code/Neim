@@ -10,7 +10,7 @@ public class MultipleOf extends VectorisableDyadntIntOrIntList implements Dyad<V
 
     @Override
     public NStack dyad(VarInteger a, VarInteger b) {
-        return new NStackBuilder(a.modulo(b).equals(new VarInteger(0)) ?
+        return new NStackBuilder(b.equals(new VarInteger(0)) ? new VarInteger(0) : a.modulo(b).equals(new VarInteger(0)) ?
                 new VarInteger(1) : new VarInteger(0)).build();
     }
 }
