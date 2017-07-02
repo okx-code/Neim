@@ -17,14 +17,16 @@ public class Main {
         boolean utf8 = true;
         boolean vars = false;
         boolean newlineSeparated = false;
+        boolean debug = false;
         if(args.length == 0) {
             System.out.print("Usage:\n" +
-                    "    java -jar Neim-1.0-SNAPSHOT.jar -<FLAGS> <FILE>\n" +
+                    "    java -jar Neim-1.0-SNAPSHOT.jar <FLAGS> <FILE>\n" +
                     "Available flags:\n" +
                     "    -i Read a line from STDIN as the program\n" +
                     "    -e Read the file in Neim's encoding\n" +
                     "    -v Don't actually do anything, just print\n" +
                     "         all the preset variables\n" +
+                    "    -d Activate debug mode\n" +
                     "    (note: flags must be combined. '-ab' is valid but '-a -b' is not)");
             return;
         } if((args.length == 1 || args.length == 2) && args[0].startsWith("-")) {
@@ -38,6 +40,8 @@ public class Main {
                 vars = true;
             } if(flags.contains('n')) {
                 newlineSeparated = true;
+            } if(flags.contains('d')) {
+                debug = true;
             }
         }
 
@@ -75,7 +79,7 @@ public class Main {
             if(newlineSeparated) {
                 tm.setSeparator("\n");
             }
-            tm.handleTokens(program);
+            tm.handleTokens(program, debug);
             tm.outputStack();
         } else {
             System.out.println(tm.outputVars());

@@ -281,6 +281,10 @@ public class TokenManager {
     }
 
     public void handleTokens(String program) {
+        handleTokens(program, false);
+    }
+
+    public void handleTokens(String program, boolean debug) {
         code = program;
 
         if(program.equalsIgnoreCase("easter egg")) {
@@ -317,12 +321,37 @@ public class TokenManager {
             }
         }
 
-        chars = sb.toString().toCharArray();
+        program = sb.toString();
+
+        if(program.contains("-")) {
+            String[] sides = program.split("-", 2);
+
+            handleTokens(sides[0]);
+
+            Object pop = stack.pop();
+            if(pop.equals(new VarInteger(0)) ||
+                    (pop instanceof IntList && !((IntList) pop).contains(new VarInteger(1)))) {
+                stack.push(new VarInteger(0));
+                return;
+            }
+
+            program = sides[1];
+        }
+
+        if(debug) {
+            System.out.println("program >> " + program);
+        }
+
+        chars = program.toCharArray();
 
         for(int i = 0; i < chars.length; i++) {
             char c = chars[i];
             token.append(c);
             String str = token.toString();
+
+            if(debug) {
+                System.out.println("current >> " + str);
+            }
 
             if(Util.isInteger(str)) {
                 integer = str;
@@ -393,6 +422,10 @@ public class TokenManager {
                 stack = twoChar.get(str).twoChar(stack, theChar.toString(), this);
 
                 token.setLength(0);
+            }
+
+            if(debug) {
+                System.out.println("stack >> " + stack);
             }
 
             if(finish || finishSilent) {
