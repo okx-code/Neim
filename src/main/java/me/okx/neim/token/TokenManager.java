@@ -56,6 +56,8 @@ public class TokenManager {
     private long thetaValue;
     private long index;
 
+    private boolean debug;
+
     public long getThetaValue() {
         return thetaValue;
     }
@@ -223,6 +225,7 @@ public class TokenManager {
         tokens.put("𝕟", new Concatenate());
         tokens.put("𝕠", new Count());
         tokens.put("𝕣", new ReverseRepeat());
+        tokens.put("𝕤", new SwapSubtract());
 
         tokens.put("α", new Variable(-1));
         String lowerGreek = "βγδεζηθικλμνξπρσςτυφχψω";
@@ -237,6 +240,10 @@ public class TokenManager {
                 nums++;
             }
         }
+    }
+
+    public boolean isDebug() {
+        return debug;
     }
 
     public void setSeparator(String sep) {
@@ -285,6 +292,8 @@ public class TokenManager {
     }
 
     public void handleTokens(String program, boolean debug) {
+        this.debug = debug;
+
         code = program;
 
         if(program.equalsIgnoreCase("easter egg")) {

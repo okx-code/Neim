@@ -14,7 +14,7 @@ public class InfiniteLoop implements Special {
         tm.getStack().addAll(stack);
 
         while(!(tm.finishSilent || tm.finish)) {
-            tm.handleTokens(value);
+            tm.handleTokens(value, te.isDebug());
         }
 
         return tm.getStack();

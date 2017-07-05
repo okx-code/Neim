@@ -240,4 +240,9 @@ public class VarInteger implements Cloneable {
 
         return this;
     }
+
+    public VarInteger subtract(VarInteger b) {
+        this.value = this.value.subtract(b.getBigIntegerValue());
+        return this;
+    }
 }
