@@ -6,10 +6,10 @@ import me.okx.neim.token.types.Dyad;
 import me.okx.neim.token.types.vectorisable.VectorisableDyadIntInt;
 import me.okx.neim.var.VarInteger;
 
-public class SwapSubtract extends VectorisableDyadIntInt implements Dyad<VarInteger, VarInteger> {
+public class AbsoluteSubtract extends VectorisableDyadIntInt implements Dyad<VarInteger, VarInteger> {
 
     @Override
     public NStack dyad(VarInteger a, VarInteger b) {
-        return new NStackBuilder(b.subtract(a)).build();
+        return new NStackBuilder(a.subtract(b).abs()).build();
     }
 }

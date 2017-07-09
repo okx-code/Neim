@@ -123,9 +123,11 @@ public class TokenManager {
 
         tokens.put("/", new DeleteFromUnderneath());
 
-        tokens.put("_", new Dump());
+        tokens.put(":", new PreviousPrime());
+        tokens.put(";", new NextPrime());
         tokens.put(">", new Increment());
         tokens.put("<", new Decrement());
+        tokens.put("_", new Dump());
 
         twoChar.put("'", new ThreeDigitNumber(100));
         twoChar.put("\"", new ThreeDigitNumber(356));
@@ -225,7 +227,7 @@ public class TokenManager {
         tokens.put("𝕟", new Concatenate());
         tokens.put("𝕠", new Count());
         tokens.put("𝕣", new ReverseRepeat());
-        tokens.put("𝕤", new SwapSubtract());
+        tokens.put("𝕤", new AbsoluteSubtract());
 
         tokens.put("α", new Variable(-1));
         String lowerGreek = "βγδεζηθικλμνξπρσςτυφχψω";

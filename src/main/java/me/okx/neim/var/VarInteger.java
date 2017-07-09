@@ -245,4 +245,12 @@ public class VarInteger implements Cloneable {
         this.value = this.value.subtract(b.getBigIntegerValue());
         return this;
     }
+
+    public VarInteger abs() {
+        if(value.compareTo(BigInteger.ZERO) > 0) {
+            return this;
+        } else {
+            return this.multiply(new VarInteger(-1));
+        }
+    }
 }
