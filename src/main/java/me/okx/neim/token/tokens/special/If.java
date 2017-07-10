@@ -6,13 +6,15 @@ import me.okx.neim.token.types.Special;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
+import java.math.BigInteger;
+
 public class If implements Special {
     @Override
     public NStack special(NStack stack, String value, TokenManager _tm) {
         Object top = stack.pop();
         boolean a;
         if(top instanceof VarInteger) {
-            a = ((VarInteger) top).getValue() == 1;
+            a = ((VarInteger) top).getBigIntegerValue().compareTo(new BigInteger("1")) == 0;
         } else {
             a = ((IntList) top).contains(new VarInteger(1));
         }
@@ -26,14 +28,7 @@ public class If implements Special {
         } else {
             program = value.split("\\#")[0];
         }
-        TokenManager tm = new TokenManager(stack.getInput());
-        tm.getStack().addAll(stack);
-        tm.registerTokens(_tm.getThetaValue(), _tm.getIndex());
-        tm.handleTokens(program);
-        stack.clear();
-        stack.addAll(tm.getStack());
-
-        _tm.finish = tm.isFinished();
+        _tm.handleTokens(program);
 
         return stack;
     }

@@ -109,6 +109,8 @@ public class TokenManager {
 
         special.put("Σ", new Keep(0)); // keep values only equal to zero
 
+        replace.put("ᛃ", " 2𝕄𝐎");
+
         twoToken.put("Ψ", new ShortForEach());
 
         tokens.put(" ", new Nothing());
