@@ -28,10 +28,9 @@ public class ForEach implements Special {
             tm.getStack().addAll(stack);
             tm.getStack().push(var);
             tm.registerTokens(var.getValue(), i);
-            tm.handleTokens(value);
+            tm.handleTokens(value, _tm.isDebug());
 
             finished.add((VarInteger) tm.getStack().pop());
-
             if(tm.finish) {
                 break;
             }

@@ -28,7 +28,7 @@ public class If implements Special {
         } else {
             program = value.split("\\#")[0];
         }
-        _tm.handleTokens(program);
+        _tm.handleTokens(program, _tm.isDebug());
 
         return stack;
     }
