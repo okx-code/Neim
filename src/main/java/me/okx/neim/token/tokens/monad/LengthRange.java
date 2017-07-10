@@ -10,6 +10,6 @@ public class LengthRange implements Monad<IntList> {
 
     @Override
     public NStack monad(IntList a) {
-        return new NStackBuilder(Util.range(a.size())).build();
+        return new NStackBuilder(Util.irange(a.size())).build();
     }
 }
