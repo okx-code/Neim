@@ -123,6 +123,7 @@ public class TokenManager {
 
         special.put("(", new Base255());
 
+        tokens.put(")", new Nothing());
         tokens.put("/", new DeleteFromUnderneath());
 
         tokens.put(":", new PreviousPrime());
