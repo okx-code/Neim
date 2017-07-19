@@ -12,7 +12,7 @@ public class IsComposite extends Vectorisable implements Monad<VarInteger> {
     @Override
     public NStack monad(VarInteger a) {
         return new NStackBuilder(
-                Util.booleanToNumber(a.primeFactors().size() != 1)
+                Util.booleanToNumber(!a.equals(new VarInteger(1)) && a.primeFactors().size() != 1)
         ).build();
     }
 }

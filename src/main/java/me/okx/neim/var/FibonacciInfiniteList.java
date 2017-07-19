@@ -3,6 +3,10 @@ package me.okx.neim.var;
 import java.math.BigInteger;
 
 public class FibonacciInfiniteList extends InfiniteList {
+    public FibonacciInfiniteList() {
+        init();
+    }
+
     @Override
     public VarInteger infGet(int index) {
         VarInteger v = new VarInteger();

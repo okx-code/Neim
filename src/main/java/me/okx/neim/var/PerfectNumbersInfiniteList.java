@@ -1,6 +1,10 @@
 package me.okx.neim.var;
 
 public class PerfectNumbersInfiniteList extends InfiniteList {
+    public PerfectNumbersInfiniteList() {
+        init();
+    }
+
     @Override
     public VarInteger infGet(int index) {
         return new VarInteger(nthPerfect(++index));

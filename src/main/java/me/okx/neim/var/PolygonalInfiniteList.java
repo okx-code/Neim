@@ -1,10 +1,11 @@
 package me.okx.neim.var;
 
 public class PolygonalInfiniteList extends InfiniteList {
-    private long s = 0;
+    private long s = -1;
 
     public PolygonalInfiniteList(long sides) {
         this.s = sides;
+        this.real = true;
     }
 
     @Override

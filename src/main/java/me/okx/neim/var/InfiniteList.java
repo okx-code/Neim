@@ -1,15 +1,24 @@
 package me.okx.neim.var;
 
 public abstract class InfiniteList extends IntList {
-    //protected List<Long> internalList = new ArrayList<>();
-    //protected int shift = 0;
+    protected boolean real = false;
 
-    /*@Override
+    //protected List<Long> internalList = new ArrayList<>();
+    protected int shift = 0;
+
+    @Override
     public int size() {
+        if(!real) {
+            return super.size();
+        }
         return Integer.MAX_VALUE;
-    }*/
+    }
 
     public InfiniteList() {
+
+    }
+
+    public void init() {
         int index = 0;
         while(true) {
             try {
@@ -21,16 +30,23 @@ public abstract class InfiniteList extends IntList {
         }
     }
 
-    /*@Override
+    @Override
     public VarInteger get(int index) {
+        if(!real) {
+            return super.get(index);
+        }
         return infGet(index + shift);
-    }*/
+    }
 
     public abstract VarInteger infGet(int index);
 
     @Override
     public String toString() {
-        return "[infinite list]";
+        if(real) {
+            return "[infinite list]";
+        } else {
+            return super.toString();
+        }
         /*StringBuilder sb = new StringBuilder("[");
         int i = 0;
         VarInteger get = get(i);
@@ -48,8 +64,11 @@ public abstract class InfiniteList extends IntList {
         return sb.toString();*/
     }
 
-    /*@Override
+    @Override
     public boolean contains(Object obj) {
+        if(!real) {
+            return super.contains(obj);
+        }
         // assumes list is incrementing
         if(!(obj instanceof VarInteger)) {
             return false;
@@ -69,10 +88,13 @@ public abstract class InfiniteList extends IntList {
 
     @Override
     public VarInteger remove(int index) {
+        if(!real) {
+            return super.remove(index);
+        }
         if(index == 0) {
             shift++;
             return null;
         }
         return null;
-    }*/
+    }
 }

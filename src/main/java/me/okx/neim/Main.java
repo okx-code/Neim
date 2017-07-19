@@ -30,6 +30,7 @@ public class Main {
                     "    (note: flags must be combined. '-ab' is valid but '-a -b' is not)");
             return;
         } if((args.length == 1 || args.length == 2) && args[0].startsWith("-")) {
+
             List<Character> flags = args[0].substring(1).chars().mapToObj(c -> (char) c).collect(Collectors.toList());
 
             if(flags.contains('i')) {
