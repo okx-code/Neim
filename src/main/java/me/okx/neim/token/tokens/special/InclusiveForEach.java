@@ -1,12 +1,15 @@
 package me.okx.neim.token.tokens.special;
 
 import me.okx.neim.stack.NStack;
+import me.okx.neim.stack.NStackBuilder;
 import me.okx.neim.token.TokenManager;
 import me.okx.neim.token.types.Special;
 import me.okx.neim.util.Util;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 
 public class InclusiveForEach implements Special {
@@ -24,7 +27,7 @@ public class InclusiveForEach implements Special {
             }
         }
         TokenManager tm = new TokenManager();
-        IntList finished = new IntList();
+        List<VarInteger> finished = new ArrayList<>();
         for(int i = 0; i < a.size(); i++) {
             VarInteger var = a.get(i);
             tm = new TokenManager();
@@ -33,14 +36,20 @@ public class InclusiveForEach implements Special {
             tm.getStack().addAll(stack);
             tm.getStack().push(var);
             tm.registerTokens(var.getValue(), i);
-            tm.handleTokens(value);
-            finished.add((VarInteger) tm.getStack().pop());
+            tm.handleTokens(value, _tm.isDebug());
+            VarInteger pop = tm.getStack().popInt().clone();
+            finished.add(pop);
         }
-        stack.add(finished);
+
+        IntList end = new IntList();
+
+        for(VarInteger f : finished) {
+            end.add(f);
+        }
 
         _tm.setFinished(tm.isFinished());
 
-        return stack;
+        return new NStackBuilder(end).build();
     }
 
     public void f(Function<Integer, Integer> g) {

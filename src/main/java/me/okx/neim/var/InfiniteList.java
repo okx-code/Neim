@@ -1,24 +1,32 @@
 package me.okx.neim.var;
 
-import java.util.*;
+public abstract class InfiniteList extends IntList {
+    //protected List<Long> internalList = new ArrayList<>();
+    //protected int shift = 0;
 
-public class InfiniteList extends IntList {
-    protected List<Long> internalList = new ArrayList<>();
-    protected int shift = 0;
-
-    @Override
+    /*@Override
     public int size() {
         return Integer.MAX_VALUE;
+    }*/
+
+    public InfiniteList() {
+        int index = 0;
+        while(true) {
+            try {
+                this.add(infGet(index));
+                index++;
+            } catch(Exception ex) {
+                break;
+            }
+        }
     }
 
-    @Override
+    /*@Override
     public VarInteger get(int index) {
         return infGet(index + shift);
-    }
+    }*/
 
-    public VarInteger infGet(int index) {
-        return null;
-    }
+    public abstract VarInteger infGet(int index);
 
     @Override
     public String toString() {
@@ -40,7 +48,7 @@ public class InfiniteList extends IntList {
         return sb.toString();*/
     }
 
-    @Override
+    /*@Override
     public boolean contains(Object obj) {
         // assumes list is incrementing
         if(!(obj instanceof VarInteger)) {
@@ -66,5 +74,5 @@ public class InfiniteList extends IntList {
             return null;
         }
         return null;
-    }
+    }*/
 }

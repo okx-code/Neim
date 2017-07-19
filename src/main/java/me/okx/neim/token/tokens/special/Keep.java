@@ -28,7 +28,7 @@ public class Keep implements Special {
             tm.registerTokens(var.getValue(), i);
             tm.getStack().add(stack);
             tm.getStack().push(var);
-            tm.handleTokens(value);
+            tm.handleTokens(value, _tm.isDebug());
             Object pop = tm.getStack().pop();
             if(pop instanceof VarInteger) {
                 VarInteger v = (VarInteger) pop;

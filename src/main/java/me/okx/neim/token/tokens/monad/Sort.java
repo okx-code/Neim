@@ -6,10 +6,7 @@ import me.okx.neim.token.types.Monad;
 import me.okx.neim.var.IntList;
 import me.okx.neim.var.VarInteger;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Sort implements Monad<Object> {
 
@@ -17,12 +14,9 @@ public class Sort implements Monad<Object> {
     public NStack monad(Object a) {
         Object finished = null;
         if(a instanceof IntList) {
-            List<Long> vals = new ArrayList<>();
-            for (VarInteger val : (IntList) a) {
-                vals.add(val.getValue());
-            }
-            Collections.sort(vals);
-            finished = new IntList(vals);
+            IntList ia = (IntList) a;
+            Collections.sort(ia, (Comparator<VarInteger>) (o1, o2) -> (int) o1.clone().subtract(o2.clone()).getValue());
+            finished = ia;
         } else if(a instanceof VarInteger) {
             char[] chars = a.toString().toCharArray();
             Arrays.sort(chars);

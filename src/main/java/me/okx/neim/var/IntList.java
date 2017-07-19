@@ -3,20 +3,11 @@ package me.okx.neim.var;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class IntList extends ArrayList<VarInteger> {
-    public IntList(ArrayList<VarInteger> arr) {
+    public IntList(List<VarInteger> arr) {
         this.addAll(arr);
-    }
-
-    public IntList(Iterable i) {
-        for(Object a : i) {
-            if(a instanceof Long) {
-                this.add(new VarInteger((long) a));
-            } else {
-                this.add((VarInteger) a);
-            }
-        }
     }
 
     public static IntList fromLongList(ArrayList<Long> a) {
