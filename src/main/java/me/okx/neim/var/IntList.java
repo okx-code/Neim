@@ -38,7 +38,7 @@ public class IntList extends ArrayList<VarInteger> {
             if (k != 0) {
                 strb.append(" ");
             }
-            strb.append(this.get(k).getValue());
+            strb.append(this.get(k).getBigIntegerValue());
         }
         strb.append("]");
         return strb.toString();
