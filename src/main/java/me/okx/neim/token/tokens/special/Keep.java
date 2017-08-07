@@ -22,10 +22,11 @@ public class Keep implements Special {
         }
         IntList list = (IntList) top;
         TokenManager tm = new TokenManager();
+        int j = 0;
         for(int i = 0; i < list.size(); i++) {
             VarInteger var = list.get(i).clone();
             tm = new TokenManager(_tm.getInput());
-            tm.registerTokens(var.getValue(), i);
+            tm.registerTokens(var.getValue(), j);
             tm.getStack().add(stack);
             tm.getStack().push(var);
             tm.handleTokens(value, _tm.isDebug());
@@ -40,6 +41,7 @@ public class Keep implements Special {
                 list.remove(i);
                 i--;
             }
+            j++;
         }
 
         _tm.setFinished(tm.isFinished());

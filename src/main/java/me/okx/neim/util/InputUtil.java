@@ -47,7 +47,7 @@ public class InputUtil {
 
     public Object getSomething(int lineNumber) {
         String s = line(lineNumber);
-        if(s.contains(" ")) {
+        if(s.matches("\\[.*\\]")) {
             return getList(s);
         } else {
             return new VarInteger(s);

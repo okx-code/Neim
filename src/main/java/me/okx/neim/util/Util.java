@@ -16,7 +16,7 @@ public class Util {
     }
 
     public static boolean isInteger(String str) {
-        return str.matches("[0-9]+");
+        return str.matches("[0-9\\-]+");
     }
 
     public static int sumString(String str) {
