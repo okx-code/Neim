@@ -10,7 +10,7 @@ public class nTimesDo implements Special {
     public NStack special(NStack stack, String value, TokenManager te) {
         long v = stack.popInt().getValue();
         for(long i = 0; i < v; i++) {
-            te.handleTokens(value);
+            te.handleTokens(value, te.isDebug());
             if(te.isFinished()) {
                 break;
             }

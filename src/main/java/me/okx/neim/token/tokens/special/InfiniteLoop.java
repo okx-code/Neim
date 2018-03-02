@@ -13,6 +13,7 @@ public class InfiniteLoop implements Special {
 
         tm.getStack().addAll(stack);
 
+        int i = 0;
         while(!(tm.finishSilent || tm.finish)) {
             tm.handleTokens(value, te.isDebug());
         }
